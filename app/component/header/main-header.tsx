@@ -1,0 +1,31 @@
+'use client'
+import Link from "next/link"
+import Image from "next/image"
+import logoImage from '@/assets/logo.png'
+import NavLinks from "./nav-links"
+import user from '@/assets/user.png'
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MdClose } from "react-icons/md";
+import { useState } from "react"
+import { usePathname } from 'next/navigation'
+export default function MainHeader(){
+ const [isopen, setIsOpen] = useState(false)
+const path = usePathname()
+    return(
+        <header className="container mt-3">
+            <div className="flex justify-between items-center">
+            <Link className="" href='/'>
+                <Image src={logoImage} width={132} height={122} alt="Logo image"></Image>
+            </Link>
+            <NavLinks isOpen={isopen} />
+            <div className="flex align-middle items-center">
+            <Image src={user} alt="uer image" height={32}></Image>
+            <Link href='/login' className={path.startsWith('/login') ? 'text-yellow-600': 'text-white'}>LogIn</Link>
+            </div>
+        <div onClick={() => setIsOpen(!isopen)} className="cursor-pointer md:hidden z-50">
+                {isopen ? <MdClose className="text-2xl" /> : <GiHamburgerMenu className="text-2xl" />}
+         </div>
+            </div>
+        </header>
+    )
+}
