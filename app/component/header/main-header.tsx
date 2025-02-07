@@ -1,9 +1,9 @@
 'use client'
 import Link from "next/link"
 import Image from "next/image"
-import logoImage from '@/assets/logo.png'
+import logoImage from '@/public/logo.png'
 import NavLinks from "./nav-links"
-import user from '@/assets/user.png'
+import user from '@/public/user.png'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import { useState } from "react"
@@ -20,7 +20,7 @@ const path = usePathname()
             <NavLinks isOpen={isopen} />
             <div className="flex align-middle items-center">
             <Image src={user} alt="uer image" height={32}></Image>
-            <Link href='/login' className={path.startsWith('/login') ? 'text-yellow-600': 'text-white'}>LogIn</Link>
+            <Link href='/login' className={path.startsWith('/login') ? 'text-yellow-600 text-lg underline': 'text-white'}>LogIn</Link>
             </div>
         <div onClick={() => setIsOpen(!isopen)} className="cursor-pointer md:hidden z-50">
                 {isopen ? <MdClose className="text-2xl" /> : <GiHamburgerMenu className="text-2xl" />}

@@ -1,8 +1,8 @@
-
+import Captions from "./component/header-section-1/caption";
 export default function Home() {
   return (
     <main className=""> 
-    <h1>Home Page</h1>
+    <Captions />
     </main>
   );
 }

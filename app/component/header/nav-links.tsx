@@ -19,13 +19,13 @@ export default function NavLinks({ isOpen }: NavLinksProps) {
            <Link href='/' className={path.startsWith('/') ? 'text-yellow-600': 'text-white'}>Home</Link>
           </li>
           <li>
-            <Link href='/about' className={path.startsWith('/about') ? 'text-yellow-600': 'text-white'}>About Us</Link>
+            <Link href='/about' className={path.startsWith('/about') ? 'text-yellow-600 text-lg underline': 'text-white'}>About Us</Link>
           </li>
           <li>
-            <Link href='/products' className={path.startsWith('/products') ? 'text-yellow-600': 'text-white'}>Products</Link>
+            <Link href='/products' className={path.startsWith('/products') ? 'text-yellow-600 text-lg underline': 'text-white'}>Products</Link>
           </li>
           <li>
-            <Link href='/services' className={path.startsWith('/services') ? 'text-yellow-600': 'text-white'}>Services</Link>
+            <Link href='/services' className={path.startsWith('/services') ? 'text-yellow-600 text-lg underline': 'text-white'}>Services</Link>
           </li>
         </ul>
       </div>
