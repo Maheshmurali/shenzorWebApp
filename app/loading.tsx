@@ -1,7 +1,9 @@
+
+import { Spinner } from "flowbite-react";
 export default function Loading(){
     return(
         <div>
-            Fetching...
+            <Spinner aria-label="Default status example" />;
         </div>
     )
 }

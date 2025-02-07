@@ -6,7 +6,7 @@ export default function HeaderCards(){
             <div className="container">
             <div className="w-full flex items-center justify-center">
                 <h3 className="text-2xl md:text-3xl text-slate-800">
-                    <span className="text-red-800">W</span>hy Choose US ?
+                    <span className="text-primary">W</span>hy Choose US ?
                 </h3>
             </div>
             <div className="text-center mt-4 text-slate-600">
