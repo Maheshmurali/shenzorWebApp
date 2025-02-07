@@ -10,8 +10,8 @@ export default {
     screens : {
       sm : "340px",
       md : "540px",
-      lg : "768px",
-      xl : "1180px"
+      lg : "968px",
+      xl : "1380px"
     },
     container : {
       center : true ,
@@ -21,8 +21,13 @@ export default {
       }
     },
     extend: {
-      colors: {},
-    },
+      colors: {
+        primary: "#EF3B3E", 
+        darkblue: "#040d24",
+        dark: "#1a1a1a", 
+        light: "#f9f9f9", 
+      },
+    }
   },
   plugins: [],
 } satisfies Config;
