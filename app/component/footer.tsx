@@ -1,67 +1,87 @@
-import { LiaCopyrightSolid } from "react-icons/lia";
+
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/logo.png"
-import {
-    Footer,
-    FooterDivider,
-    FooterIcon,
-    FooterLink,
-    FooterLinkGroup,
-    FooterTitle,
-  } from "flowbite-react";
-  import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
-  
+import logo from '@/public/logo.png'
+import { Phone, MessageSquareShare, Map, Facebook, Instagram, Linkedin, Whatsapp} from "lucide-react";
+import { BsTwitterX} from "react-icons/bs";
+import { FaWhatsapp } from "react-icons/fa";
+
   export function FooterSection() {
     const year = new Date().getFullYear()
     return (
-      <Footer container className="md:px-8 py-8 text-black mt-4 rounded-md">
-        <div className="w-full md:px-12 px-2">
-          <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div className="flex items-center">
-            <Link href='/'>
-            <Image src={logo}
-             alt="logo"
-             width={140}
-             />
-            </Link>
-            </div>
-            <div className="grid grid-cols-2 sm:mt-4 sm:gap-4 md:grid-cols-3  items-center align-middle w-1/2">
-            <div className="gap-y-4 ">
-                <FooterLinkGroup className="flex flex-col text-center gap-y-6">
-                  <span className="hover:text-primary translate hover:duration-300"><Link href='/about'>About Us</Link></span>
-                  <span className="hover:text-primary translate hover:duration-300"><Link href='/products'>Products</Link></span>
-                  <span className="hover:text-primary translate hover:duration-300"><Link href='/services'>Services</Link></span>
-                </FooterLinkGroup>
-              </div>
-              <div className="">
-                <FooterLinkGroup className="flex flex-col text-center gap-y-6">
-                <span className="hover:text-primary translate hover:duration-300"><Link href='/'>Subscriptions</Link></span>
-                <span className="hover:text-primary translate hover:duration-300"><Link href='/about'>Coustomer Service</Link></span>
-                <span className="hover:text-primary translate hover:duration-300"><Link href='/login'>Join With Us</Link></span>
-                </FooterLinkGroup>
-              </div>
-              <div className="">
-                <FooterLinkGroup className="flex flex-col text-center gap-y-6">
-                <span className="hover:text-primary translate hover:duration-300"><Link href='/about'>Contact Us</Link></span>
-                <span className="hover:text-primary translate hover:duration-300"><Link href='/about'>Terms &amp; Conditions</Link></span>
-                </FooterLinkGroup>
-              </div>
-            </div>
+      <footer className="bg-white text-black py-12 mt-12 px-8">
+      <div className="mx-auto px-4 w-full md:flex ">
+      <div className="md:w-1/2 ">
+        <Link href='/'>
+            <Image src={logo} alt="footer logo" />
+        </Link>
+        <p className="text-slate-300 mt-4">Shenzor excels in cutting-edge technology and advanced tools,
+           <br />backed by over a decade of expertise.</p>
+      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lx:grid-cols-3 gap-8 md:w-1/2 mt-4 md:mt-0">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-400 hover:text-main transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="text-gray-400 hover:text-main transition-colors">
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-gray-400 hover:text-main transition-colors">
+                  Services
+                </Link>
+              </li>
+            </ul>
           </div>
-          <FooterDivider />
-          <div className="w-full sm:flex sm:items-center sm:justify-between mt-4">
-            <span className="flex text-sm md:text-lg"><LiaCopyrightSolid  className="text-2xl"/>Shenzor Industrial Company {year}</span>
-            <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-              <FooterIcon className="hover:text-primary hover:duration-300" href="#" icon={BsFacebook} />
-              <FooterIcon className="hover:text-primary hover:duration-300" href="#" icon={BsInstagram} />
-              <FooterIcon className="hover:text-primary hover:duration-300" href="#" icon={BsTwitter} />
-              <FooterIcon className="hover:text-primary hover:duration-300" href="#" icon={BsGithub} />
-              <FooterIcon className="hover:text-primary hover:duration-300" href="#" icon={BsDribbble} />
-            </div>
+          <div className="w-auto gap-x-4">
+            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <div>
+            <ul className="space-y-4">
+              <li className="flex items-center space-x-5 text-gray-400">
+                  <span><Phone/> </span>
+                  <p>+(966) 55 9845411</p>
+              </li>
+              <li className="flex items-center space-x-5 text-gray-400">
+                <span><MessageSquareShare /></span>
+                 <p>info@shenzor.com</p>
+              </li>
+              <li className="flex items-center space-x-5 text-gray-400">
+                <span><Map /></span>
+                <p>Riyadh,KSA</p>
+              </li>
+            </ul>
+          </div>
           </div>
         </div>
-      </Footer>
-    );
-  }
-  
+       
+      </div> 
+      <div className="flex w-full align-middle justify-center items-center mt-4">
+        <div className="flex space-x-6">
+          <Link className="text-slate-400 hover:text-main" href='/'><Facebook /></Link>
+          <Link className="text-slate-400 hover:text-main" href='/'><Instagram /></Link>
+          <Link className="text-slate-400 hover:text-main" href='/'><Linkedin /></Link>
+          <Link className="text-slate-400 text-xl hover:text-main" href='/'><BsTwitterX /></Link>
+          <Link className="text-slate-400 text-xl hover:text-main" href='/'><FaWhatsapp /></Link>
+        </div>
+      </div>
+      <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+          <p>&copy; {year} Shenzor. All rights reserved.</p>
+        </div>
+        <div className=" text-center text-gray-400 cursor-pointer">
+          <p>Privacy&policy</p>
+        </div>
+    </footer>
+
+);
+}
