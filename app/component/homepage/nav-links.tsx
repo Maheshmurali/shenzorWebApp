@@ -16,16 +16,16 @@ export default function NavLinks({ isOpen }: NavLinksProps) {
       >
         <ul className="flex gap-8 md:gap-16 flex-col items-center lg:flex-row mt-8 md:mt-0">
           <li>
-           <Link href='/' className={path.startsWith('/') ? 'text-primary': 'text-white'}>Home</Link>
+           <Link href='/' className={path.startsWith('/') ? 'text-main': 'text-white'}>Home</Link>
           </li>
           <li>
-            <Link href='/about' className={path.startsWith('/about') ? 'text-primary text-lg underline': 'text-white'}>About Us</Link>
+            <Link href='/about' className={path.startsWith('/about') ? 'text-main text-lg underline': 'text-white'}>About Us</Link>
           </li>
           <li>
-            <Link href='/products' className={path.startsWith('/products') ? 'text-primary text-lg underline': 'text-white'}>Products</Link>
+            <Link href='/products' className={path.startsWith('/products') ? 'text-main text-lg underline': 'text-white'}>Products</Link>
           </li>
           <li>
-            <Link href='/services' className={path.startsWith('/services') ? 'text-primary text-lg underline': 'text-white'}>Services</Link>
+            <Link href='/services' className={path.startsWith('/services') ? 'text-main text-lg underline': 'text-white'}>Services</Link>
           </li>
         </ul>
       </div>

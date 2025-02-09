@@ -14,7 +14,7 @@ export default function HeaderCards(){
                 The Leading Developer of Integrated CCTV Inspection Systems in KSA and The Region
                 </p>
             </div>
-            <div className="w-full grid grid-cols-1 gap-8 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 
+            <div className="w-full grid grid-cols-1 gap-8 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-3 xl:gap-12
                 mt-4 py-8 overflow-x-hidden">
                 <CounterCard counts={400} value={"Projects"}/>
                 <CounterCard counts={100} value={"Happy Coustmers"} />
