@@ -8,7 +8,7 @@ export default function CounterCard({counts, value}:CounterCardProps){
   
 const [count, setCount] = useState(0);
 useEffect(() => {
-  let speed = 10
+  let speed = 50
   const updateCount = () => {
     setCount((prev) => {
       if (prev >= counts) return counts; 
