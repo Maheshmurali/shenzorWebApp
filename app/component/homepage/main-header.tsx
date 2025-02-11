@@ -15,7 +15,7 @@ const path = usePathname()
         <header className="px-12">
             <div className="flex justify-between px-6 md:px-12 bg-sub items-center py-4 fixed w-full top-0 left-0 z-50">
             <Link className="" href='/'>
-                <Image src={logoImage} width={132} height={122} alt="Logo image"></Image>
+                <Image src={logoImage} width={100} height={100} alt="Logo image"></Image>
             </Link>
             <NavLinks isOpen={isopen} />
              <div className="flex align-middle items-center">
