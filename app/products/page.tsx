@@ -47,7 +47,7 @@ const products = [
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-12 mt-9">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-12 pt-12 mt-6">
     <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

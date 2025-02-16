@@ -2,7 +2,9 @@ import { Announcements } from "./component/homepage/announcements";
 import ClientList from "./component/homepage/clients";
 import Captions from "./component/homepage/header-section-1/caption";
 import HeaderCards from "./component/homepage/header-section-card/header-section-card";
-import { MessagesPage } from "./component/homepage/messages";
+import HomeProductPallet from "./component/homepage/home-product-pallet";
+import Productsslide from "./component/homepage/productslide";
+import CustomersReviews from "./component/homepage/reviews";
 
 export default function Home() {
   return (
@@ -10,7 +12,9 @@ export default function Home() {
     <Captions />
     <HeaderCards />
     <ClientList />
-    <MessagesPage />
+    <HomeProductPallet />
+    <Productsslide />
+    <CustomersReviews />
     <Announcements />
     </main>
   );

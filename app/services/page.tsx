@@ -53,7 +53,6 @@ const services = [
 export default function Services() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Hero Section */}
       <section className="bg-sub mt-32 py-20">
         <div className="container mx-auto px-4">
           <motion.div
@@ -70,7 +69,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -103,7 +101,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA Section */}
+
       <section className="bg-slate-50 py-20">
         <div className="container mx-auto px-4 text-center">
           <motion.div

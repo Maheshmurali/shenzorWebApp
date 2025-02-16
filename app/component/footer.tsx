@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from '@/public/logo.png'
-import { Phone, MessageSquareShare, Map, Facebook, Instagram, Linkedin, Whatsapp} from "lucide-react";
+import { Phone, MessageSquareShare, Map, Facebook, Instagram, Linkedin} from "lucide-react";
 import { BsTwitterX} from "react-icons/bs";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -23,7 +23,7 @@ import { FaWhatsapp } from "react-icons/fa";
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="/" className="text-gray-400 hover:text-main transition-colors">
                   Home
                 </Link>
               </li>
