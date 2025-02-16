@@ -39,6 +39,8 @@ export default function ProductsSlides(){
                       <Image
                         src={img}
                         alt={`Portfolio ${index + 1}`}
+                        width={500}
+                        height={300}
                         className="w-full h-64 object-cover"
                       />
                     </Card>
