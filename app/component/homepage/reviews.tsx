@@ -3,32 +3,33 @@ import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Star} from "lucide-react";
+import User from '@/public/user.png'
 export default function CustomersReviews(){
   const [isLoaded, setIsLoaded] = useState(true);
   const reviews = [
     {
-      name: "Sarah Johnson",
+      name: "Customer-1",
       rating: 5,
       comment: "Exceptional service! The team went above and beyond.",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      avatar: "/user.png",
     },
     {
-      name: "Michael Chen",
+      name: "Customer-2",
       rating: 5,
       comment: "Outstanding quality and professional approach.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+      avatar: "/user.png",
     },
     {
-      name: "Emily Davis",
+      name: "Customer-3",
       rating: 4,
       comment: "Very satisfied with the results. Would recommend!",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      avatar: '/user.png',
     },
   ];
   return(
     <section className={`py-20 bg-slate-100 mt-4 ${isLoaded ? 'animate-fade-in animate-delay-400' : 'opacity-0'}`}>
     <div className="container mx-auto px-4">
-      <h2 className="text-black text-3xl font-bold text-center mb-12"><span className="text-main">C</span>ustomer Reviews</h2>
+      <h2 className="text-black text-3xl font-bold text-center mb-12"><span className="text-main">C</span>ustomers Reviews</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {reviews.map((review, index) => (
           <Card key={index} className={`p-6 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: `${600 + index * 100}ms` }}>
