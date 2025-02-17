@@ -62,7 +62,7 @@ export default function HomeProductPallet() {
 
     return (
         <>
-            <div id="main" className="w-full max-h-auto py-8 mt-4">
+            <div id="main" className="w-full max-h-auto py-8 mt-4 hidden md:block">
                 <div id="title" className="w-full text-center">
                     <h2 className="text-white text-3xl font-bold text-center mb-12"><span className="text-main">S</span>henzor's
                      <span className="text-main"> R</span>oVs</h2>
@@ -73,7 +73,7 @@ export default function HomeProductPallet() {
                     <button className={`hover:text-main ${(post==="wincan")? 'text-main':'text-white' }`} value="wincan" onClick={Selection}>WinCan</button>
                 </div>
 
-                <div id="products" className="w-full px-8 flex justify-center mt-12">
+                <div id="products" className="w-full px-32 flex justify-center mt-12">
                     {data.map((value) => {
                         const product = value[post];
                         return product ? (

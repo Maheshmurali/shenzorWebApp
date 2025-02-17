@@ -4,6 +4,7 @@ import { useState } from "react";
 import { PipetteIcon as  Lock, Mail, ArrowLeft, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 import {
   Card,
   CardHeader,
@@ -14,11 +15,12 @@ import Link from "next/link";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const routes = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     //  authentication logic
+    routes.push('/admin')
     console.log("Login attempted with:", email);
   };
 
