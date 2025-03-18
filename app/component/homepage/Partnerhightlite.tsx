@@ -83,15 +83,32 @@ const products = [
 
 function PartnerHighlites() {
   const [currentProduct, setCurrentProduct] = useState(0);
+  const [isReversing, setIsReversing] = useState(false); // Track direction
+
   useEffect(() => {
     const productTimer = setInterval(() => {
-      setCurrentProduct((prev) => (prev + 1) % products.length);
+      setCurrentProduct((prev) => {
+        if (!isReversing) {
+          if (prev + 1 === products.length) {
+            setIsReversing(true);
+            return prev - 1;
+          }
+          return prev + 1;
+        } else {
+          if (prev === 0) {
+            setIsReversing(false);
+            return prev + 1;
+          }
+          return prev - 1;
+        }
+      });
     }, 7000);
 
     return () => {
       clearInterval(productTimer);
     };
-  }, []);
+  }, [isReversing]);
+
 
   return (
     <div className="min-h-screen bg-gray-50">

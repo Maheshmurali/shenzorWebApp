@@ -7,7 +7,7 @@ import { Announcements } from './component/homepage/announcements'
 function Homepage() {
   const isLoaded = true
   return (
-    <div>
+    <div className=''>
       <HeaderSlide />
       <PartnerHighlites />
       <ClientList />
