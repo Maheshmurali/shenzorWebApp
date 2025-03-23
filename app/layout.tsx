@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Shenzor",
-  description: "Shenzore Robots",
+  title: "Shenzor- Industries",
+  description: "Shenzor Integrated CCTV Inspection Systems",
 };
 
 export default function RootLayout({

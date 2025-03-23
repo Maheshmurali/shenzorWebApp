@@ -11,11 +11,11 @@ import { FaWhatsapp } from "react-icons/fa";
     return (
       <footer className="bg-white text-black py-12 mt-12 px-8">
       <div className="mx-auto px-4 w-full md:flex ">
-      <div className="md:w-1/2 ">
-        <Link href='/'>
-            <Image src={logo} alt="footer logo" />
+      <div className="md:w-1/2 flex flex-col">
+        <Link href='/' className="">
+            <Image src={logo} alt="footer logo" width={200} height={150}/>
         </Link>
-        <p className="text-slate-300 mt-4">Shenzor excels in cutting-edge technology and advanced tools,
+        <p className="text-slate-400 mt-4">Shenzor excels in cutting-edge technology and advanced tools,
            <br />backed by over a decade of expertise.</p>
       </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lx:grid-cols-3 gap-8 md:w-1/2 mt-4 md:mt-0">

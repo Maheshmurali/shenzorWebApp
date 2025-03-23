@@ -21,12 +21,12 @@ const slides = [
   {
     image: "/carousel/image2.jpg",
     title: "Sewer cleaning with our DYNA",
-    description: "Advanced Solution For Pipiline Cleaning Systems"
+    description: "Advanced Solution For Pipeline Cleaning Systems"
   },
   {
     image: "/carousel/image6.png",
     title: "Pressure Cleaning Jets",
-    description: "For High Presious Cleaning Solution"
+    description: "For High precision Cleaning Solution"
   },
 
 ];
