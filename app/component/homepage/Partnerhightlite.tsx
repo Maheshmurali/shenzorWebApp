@@ -5,14 +5,14 @@ import Link from "next/link";
 const products = [
   {
     name: "iPEK",
-    title:"Rovin",
+    title:"Rovion",
     image: "/partners/rovin.jpg",
     description:
       "ROVION is built with flexibility in mind. Fully scalable and with 100% compatible components, it’s tailored to fit your inspection needs, allowing for precise evaluations of pipe diameters ranging from DN100 to DN2000 .",
     specification:[
       {
       id:1,
-      title : "Title",
+      title : "Full Hd",
       details: "details",
       value:"value"
     },
@@ -20,7 +20,7 @@ const products = [
   },
   {
     name: "WinCan",
-    title: "WinCanX",
+    title: "WinCanVX",
     image: "/partners/wincanx.png",
     description:
       "WinCan was the first sewer inspection software ever developed and remains the most trusted brand in the market. Commitment to innovation has helped us revolutionize the way you gain insight from inspection data—insight that helps you plan maintenance, improve performance and achieve compliance",
@@ -35,8 +35,8 @@ const products = [
   ]
   },
   {
-    name: "Dyna",
-    title: "Tank",
+    name: "DietmarKaiser",
+    title: "DYNA Combi",
     image: "/partners/dynaTank.jpg",
     description:
       "The proven combination of pumps, components and assemblies from our own production make the DYNA Combi unique.This means that individual customer wishes and requirements can be optimally implemented.",
@@ -50,11 +50,11 @@ const products = [
     ],
   },
   {
-    name: "Enz",
-    title :"eBomber",
+    name: "enz",
+    title :"eBulldog",
     image: "/partners/enz.png",
     description:
-      "The enz® Camera Nozzle adds a new dimension to the enz® nozzle product range! The modular design allows universal use with all nozzle types, such as the eBomb, the eBulldog or the eBulldozer, and thus guarantees streak-free, all-around cleaning in every application.",
+      "The enz® Camera Nozzle adds a new dimension to the enz® nozzle product range! The modular design allows universal use with all nozzle types, such as the eBomb, the eBulldog or the eScraper, and thus guarantees streak-free, all-around cleaning in every application.",
     specification: [
       {
         id:3,
@@ -65,11 +65,11 @@ const products = [
     ],
   },
   {
-    name: "iMS",
-    title :"DRIVEpluse Cleaner",
+    name: "IMS Robotics",
+    title :"DRIVEpluse",
     image: "/partners/ims.png",
     description:
-      "The DRIVEplus CLEANER enables fast and reliable removal of deposits. conclnd other materials using ultra high pressure water up to 2,500 bar. The ultraater pressure adaptation is versatile and suitable for main sewers with diame1rom DN 200 to DN 600. The rotary swivel drive (DSA), which can be rotated.",
+      "The DRIVEplus CLEANER enables fast and reliable removal of deposits. concrete other materials using ultra high pressure water up to 2,500 bar. The ultraater pressure adaptation is versatile and suitable for main sewers with diame1rom DN 200 to DN 600. The rotary swivel drive (DSA), which can be rotated.",
    specification: [
       {
         id:3,
@@ -163,37 +163,7 @@ function PartnerHighlites() {
                   </div>
                 </div>
                 {/* Features Section */}
-                {product.specification.map((spec =>(
-                  <div key={spec.id} className="flex w-full flex-wrap justify-between items-center px-4  mt-4 gap-6 md:gap-8 md:mt-6">
-                  <div className="text-center">
-                    <div className="flex justify-center mb-4">
-                      <Star className="w-10 h-10 md:w-12 md:h-12 text-blue-500" />
-                    </div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-main">
-                      {spec.title}
-                    </h3>
-                    <p className="text-gray-600">{spec.details}</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="flex justify-center mb-4">
-                      <Shield className="w-10 h-10 md:w-12 md:h-12 text-blue-500" />
-                    </div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-main">
-                      {spec.title}
-                    </h3>
-                    <p className="text-gray-600">{spec.details}</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="flex justify-center mb-4">
-                      <Truck className="w-10 h-10 md:w-12 md:h-12 text-blue-500" />
-                    </div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-main">
-                      {spec.title}
-                    </h3>
-                    <p className="text-gray-600">{spec.details}</p>
-                  </div>
-                </div>
-                )))}
+                
               </div>
             ))}
           </div>

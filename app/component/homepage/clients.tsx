@@ -4,7 +4,6 @@ import nabatat from '@/assets/n.png'
 import amana from '@/assets/e.png'
 import modon from '@/assets/modon.png'
 import alajmi from '@/assets/alajmi.png'
-import { Link } from "lucide-react"
 export default function ClientList(){
 return(
     <div className=" bg-white mt-4 rounded-md py-8">

@@ -20,7 +20,7 @@ function Homepage() {
         </div>
         <div className='p-4 py-8'>
           <p className='text-black font-serif flex relative'>
-          Welcome to Shenzor, a leader in pipeline inspection with 10 years of expertise in Riyadh. We ensure
+          Welcome to Shenzor, a leader in pipeline inspection with 10 years of expertise in KSA. We ensure
            pipeline integrity through cutting-edge technology and precise inspections. Committed to 
           safety, efficiency, and reliability, Shenzor delivers trusted solutions to protect critical assets. 
           Thank you for choosing us.

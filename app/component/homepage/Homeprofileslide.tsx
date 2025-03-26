@@ -5,13 +5,13 @@ import Image from 'next/image';
 const slides = [
   {
     image: "/carousel/image4.jpg",
-    title: "Swer Inspection Systems",
+    title: "Sewer Inspection Systems",
     description: "FROM DN100 TO DN200"
   },
   {
     image: "/carousel/image1.jpg",
     title: "Inspect More With",
-    description: "iPek Inspection System"
+    description: "iPEK Inspection System"
   },
   {
     image: "/carousel/image3.jpg",
@@ -25,8 +25,13 @@ const slides = [
   },
   {
     image: "/carousel/image6.png",
-    title: "Pressure Cleaning Jets",
-    description: "For High precision Cleaning Solution"
+    title: "Sewer cleaning and hydro excavation",
+    description: "enz Camera & Standard Nozzles"
+  },
+  {
+    image: "/carousel/image8.jpg",
+    title: "IMS UV curing systems",
+    description: "UV Curing for medium and large main sewer's"
   },
 
 ];

@@ -81,13 +81,21 @@ export default function About() {
             >
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                Founded in 2016, we've been at the forefront of pipeline inspection technology, 
-                developing innovative solutions that revolutionize how industries maintain their 
-                critical infrastructure.
+              Founded in 2016, SHENZOR provides inspection solutions and services for storm & sewer pipelines using 
+SHENZOR® registered systems and robots. In addition, we’re a trusted partner for leading companies in the field of 
+CCTV pipe inspection, cleaning and rehabilitation; iPEK GmbH, IMS Robotics GmbH, BWELL TECHNOLOGY, WinCan 
+AG and Dietmar Kaiser AG. Our diverse products portfolio enabled us to provide our customers with solutions to 
+challenges facing utility owners and operators, albeit CCTV inspection, Multi-sensor inspection or specialized UHP 
+water jet cutting crawlers to remove solid obstructions and deposits settled.
               </p>
               <p className="text-gray-600">
-                Our team of expert engineers and technicians combines decades of experience 
-                with cutting-edge robotics technology to deliver unparalleled inspection services.
+              In addition to providing inspection solutions, SHENZOR also provides technical support, local maintenance services 
+              both preventive and corrective, training & certification through our partnership with Develop Training UK.
+              </p>
+              <p className="text-gray-600">
+              Our expertise together with forging strategic partnerships with world-renowned brands in the field of sewer 
+inspection & management positioned SHENZOR as the go-to partner for Utility owners and operating entities, both 
+in KSA & the region.
               </p>
             </motion.div>
             <motion.div
