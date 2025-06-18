@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Home, RefreshCcw } from "lucide-react";
-import Lottie from "lottie-react";
-import robotAnimation from "./robot-repair.json";
+import Image from "next/image";
 
 export default function Error({
   error,
@@ -22,7 +21,7 @@ export default function Error({
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 flex items-center justify-center p-4 mt-32">
       <div className="max-w-2xl mx-auto text-center">
         <div className="w-full max-w-md mx-auto mb-8">
-          <Lottie animationData={robotAnimation} loop={true} className="bg-black"/>
+          <Image src="/Error.png" alt="Error" width={240} height={140} />
         </div>
         
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-4">

@@ -23,10 +23,11 @@ export default {
   	},
   	extend: {
   		colors: {
-  			main: '#EF3B3E',
+  			main: '#EE0805',
   			gray90: '#1a1a1a',
-  			sub: '#040d24',
+  			sub: '#000001',
   			light: '#f9f9f9',
+			drakGray:'#231F20',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id String @id @default(uuid())
+  username String @unique
+}
+
+model client {
+  id    String @id @default(uuid())
+  name  String
+  email String @unique
+  phone String
+  img   String?
+  clientid String @unique
+  location String
+  addressline1 String
+  addressline2 String
+  addressline3 String
+  contactperson String
+  details String?
+  createdAt DateTime @default(now())
+  
+  orders order[]
+  messages message[]
+  announancements announancement[]
+}
+
+model partner {
+  id String @id @default(uuid()) 
+  partnerid String @unique
+  name  String
+  email String @unique
+  phone String
+  img   String?
+  location String
+  contactperson String
+  createdAt DateTime @default(now())
+
+  products product[]
+  services service[]
+}
+
+model product {
+  id String @id @default(uuid())
+  productid String @unique
+  name String
+  details String
+  img String?
+  spec1 String?
+  spec2 String?
+  spec3 String?
+  createdAt DateTime @default(now())
+
+  partnerid String
+  partner partner @relation(fields: [partnerid], references: [id]) 
+
+  orders order[]
+}
+
+model service {
+  id String @id @default(uuid())
+  serviceid String @unique
+  name String
+  details String
+  spec1 String?
+  spec2 String?
+  spec3 String?
+  img String?
+  createdAt DateTime @default(now())
+
+  partnerid String
+  partner partner @relation(fields: [partnerid], references: [id]) 
+
+  orders order[]
+}
+
+model order {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  orderid String @unique
+
+  productid String? 
+  serviceid String? 
+  status Boolean
+  clientid String
+
+  products product? @relation(fields: [productid], references: [id]) 
+  services service? @relation(fields: [serviceid], references: [id]) 
+  clients client @relation(fields: [clientid], references: [id])
+}
+
+model message {
+  id  Int @id @default(autoincrement())
+  title String
+  content String
+  date DateTime @default(now())
+  clientid String
+
+  clients client @relation(fields: [clientid], references: [id])
+}
+
+model announancement {
+  id  Int @id @default(autoincrement())
+  title String
+  content String
+  date DateTime @default(now())
+  clientid String
+
+  clients client @relation(fields: [clientid], references: [id])
+}
