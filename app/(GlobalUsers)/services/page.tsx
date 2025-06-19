@@ -53,7 +53,7 @@ const services = [
 export default function Services() {
   return (
     <main className="min-h-screen bg-drakGray">
-      <section className="bg-sub mt-32 py-20">
+      <section className="bg-sub mt-16 py-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

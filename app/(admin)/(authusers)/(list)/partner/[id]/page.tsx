@@ -48,8 +48,8 @@ export default function PartnerPfofilePage() {
             </div>
             
           </div>
-          <ProductsCard />
        </div>
+       <ProductsCard />
     </div>
 
   )

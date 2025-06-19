@@ -3,10 +3,10 @@ import InComplect from '@/Assets/statusno.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import {role,PreOrder, ClientMessages, Announancement} from '@/lib/data'
-import Table from "@/app/Components/Table"
-import Messages from '@/app/Components/Messages'
-import Announancements from '@/app/Components/Announancement'
-import FormModal from '@/app/Components/FormModal'
+import Table from "@/app/(admin)/Components/Table"
+import Messages from '@/app/(admin)/Components/Messages'
+import Announancements from '@/app/(admin)/Components/Announancement'
+import FormModal from '@/app/(admin)/Components/FormModal'
 type Order={
   id: number,
   orderItem: string,

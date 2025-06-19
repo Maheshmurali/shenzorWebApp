@@ -68,11 +68,11 @@ import { FaWhatsapp } from "react-icons/fa";
       </div> 
       <div className="flex w-full align-middle justify-center items-center mt-4">
         <div className="flex space-x-6">
-          <Link className="text-white hover:text-main" href='/'><Facebook /></Link>
-          <Link className="text-white hover:text-main" href='/'><Instagram /></Link>
-          <Link className="text-white hover:text-main" href='/'><Linkedin /></Link>
-          <Link className="text-white text-xl hover:text-main" href='/'><BsTwitterX /></Link>
-          <Link className="text-white text-xl hover:text-main" href='/'><FaWhatsapp /></Link>
+          <Link className="text-white hover:text-main" href='https://www.facebook.com/?locale=ar_AR'><Facebook /></Link>
+          <Link className="text-white hover:text-main" href='https://www.instagram.com/?utm_source=pwa_homescreen&__pwa=1'><Instagram /></Link>
+          <Link className="text-white hover:text-main" href='https://www.linkedin.com/'><Linkedin /></Link>
+          <Link className="text-white text-xl hover:text-main" href='https://x.com/'><BsTwitterX /></Link>
+          <Link className="text-white text-xl hover:text-main" href='https://www.whatsapp.com/?lang=ar_AR'><FaWhatsapp /></Link>
         </div>
       </div>
       <div className="mt-8 pt-8 border-t border-gray-800 text-center text-main">
