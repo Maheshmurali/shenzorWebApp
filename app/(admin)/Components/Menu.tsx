@@ -10,6 +10,7 @@ import Announancements from '@/Assets/announancements.png'
 import Messages from '@/Assets/messages.png'
 import Order from '@/Assets/order.png'
 import LogOut from '@/Assets/logout.png'
+import Reset from '@/Assets/Reset.png'
 import { role } from "@/lib/data"
 const menuItems = [
     {
@@ -63,6 +64,12 @@ const menuItems = [
                 href: "/order",
                 count:2
               },
+                  {  icon: Reset,
+            label: "Requests",
+            role : role,
+            href: "/requests",
+            count: 1
+          },
               {  icon: LogOut,
                 label: "LogOut",
                 href: "/logout"
@@ -73,14 +80,14 @@ const menuItems = [
 
 const Menu = () => {
   return (
-    <div className="mt-4 text-sm text-slate-500">
+    <div className=" text-sm text-slate-500">
       {menuItems.map((section) => {
         // Filter out items based on user role
         const filteredItems = section.items.filter(
           (item) => !item.role || item.role === "admin"
         );
         return (
-          <div className="px-4 py-3 flex flex-col" key={section.title}>
+          <div className="px-4 py-2 flex flex-col" key={section.title}>
             <span className="hidden lg:block">{section.title}</span>
             {filteredItems.map((links) => (
               <Link
