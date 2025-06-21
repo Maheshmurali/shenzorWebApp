@@ -1,12 +1,15 @@
+
 import Complect from '@/Assets/statusok.png'
 import InComplect from '@/Assets/statusno.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import Edit from '@/Assets/update.png'
-import {role,PreOrder, ClientMessages, Announancement} from '@/lib/data'
+import {PreOrder, ClientMessages, Announancement,} from '@/lib/data'
 import Announancements from '@/app/(admin)/Components/Announancement'
 import Table from '@/app/(admin)/Components/Table'
 import Messages from '@/app/(admin)/Components/Messages'
+import { role } from '@/lib/utility'
+
 type Order={
   id: number,
   orderItem: string,
@@ -84,7 +87,7 @@ export default function ProfilePage() {
         Admin Page
       </div>
     )
-  }
+  }else{
   
     return (
       <div className="flex-1 p-4 flex flex-col gap-4 lg:flex-row">
@@ -141,6 +144,6 @@ export default function ProfilePage() {
         </div>
       </div>
       
-    )
+    )}
   }
   

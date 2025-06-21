@@ -47,7 +47,7 @@ const products = [
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b bg-drakGray to-slate-100 py-12 pt-12 mt-6">
+    <div className="min-h-screen bg-gradient-to-b bg-drakGray to-slate-100 py-28 pt-12 mt-4">
     <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -56,10 +56,10 @@ export default function ProductsPage() {
           >
          <div className="text-center mb-12 bg-sub py-12">
           <h1 className="text-4xl font-bold tracking-tight text-slate-300 mb-4">
-            <span className="text-main">O</span>ur Services & Solutions
+           OUR PRODUCTS
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive pipe inspection and maintenance services using cutting-edge technology
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-gray-100">
+            Comprehensive pipe inspection and maintenance services using cutting-edge Technology
           </p>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,3 +1,4 @@
+
 import Link from "next/link"
 import Image from "next/image"
 import Home from '@/Assets/home.png'
@@ -9,86 +10,45 @@ import Shop from '@/Assets/shopping.png'
 import Announancements from '@/Assets/announancements.png'
 import Messages from '@/Assets/messages.png'
 import Order from '@/Assets/order.png'
-import LogOut from '@/Assets/logout.png'
 import Reset from '@/Assets/Reset.png'
-import { role } from "@/lib/data"
+import { currentUser } from "@clerk/nextjs/server"
+
 const menuItems = [
-    {
-        title : "MENU",
-        items: [
-          {  icon: Home,
-            label: "HOME",
-            href: "/profile"
-          },
-          {  icon: Clients,
-            label: "Clients",
-            role: role,
-            href: "/client",
-          },
-          {  icon: Partners,
-            label: "Partners",
-            role : role,
-            href: "/partner"
-          },
-          {  icon: Products,
-            label: "Products",
-            href: "/products"
-          },
-          {  icon: Services,
-            label: "Services",
-            href: "/services"
-          },
-          {  icon: Shop,
-            label: "Shop",
-            href: "/shop"
-          },
-          {  icon: Announancements,
-            label: "Announcements",
-            role : role,
-            href: "/creator"
-          },
-          {  icon: Messages,
-            label: "Messages",
-            role : role,
-            href: "/messages",
-            count: 1
-          },
-        ]
-    },
-    {
-        title : "OTHRES",
-        items : [
-            {  icon: Order,
-                label: "Order",
-                role : role,
-                href: "/order",
-                count:2
-              },
-                  {  icon: Reset,
-            label: "Requests",
-            role : role,
-            href: "/requests",
-            count: 1
-          },
-              {  icon: LogOut,
-                label: "LogOut",
-                href: "/logout"
-              },
-        ]
-    }
+  {
+    title: "MENU",
+    items: [
+      { icon: Home, label: "HOME", href: "/profile" },
+      { icon: Clients, label: "Clients", role: "admin", href: "/clients" },
+      { icon: Partners, label: "Partners", role: "admin", href: "/partner" },
+      { icon: Products, label: "Products", href: "/products" },
+      { icon: Services, label: "Services", href: "/services" },
+      { icon: Shop, label: "Shop", href: "/shop" },
+      { icon: Order, label: "Order", role: "admin", href: "/order", count: 2 },
+    ],
+  },
+  {
+    title: "OTHERS",
+    items: [
+      { icon: Announancements, label: "Announcements", href: "/creator" },
+      { icon: Messages, label: "Messages", href: "/messages", count: 1 },
+      { icon: Reset, label: "Requests", role: "admin", href: "/requests", count: 1 },
+    ],
+  },
 ]
 
-const Menu = () => {
+const Menu = async() => {
+  const user = await currentUser()
+  const role = user?.publicMetadata.role as string
   return (
-    <div className=" text-sm text-slate-500">
+    <div className="text-sm text-slate-500">
       {menuItems.map((section) => {
-        // Filter out items based on user role
         const filteredItems = section.items.filter(
-          (item) => !item.role || item.role === "admin"
-        );
+          (item) => !item.role || item.role === role
+        )
+
         return (
           <div className="px-4 py-2 flex flex-col" key={section.title}>
-            <span className="hidden lg:block">{section.title}</span>
+            <span className="hidden lg:block">{section.title} </span>
             {filteredItems.map((links) => (
               <Link
                 key={links.label}
@@ -109,10 +69,10 @@ const Menu = () => {
               </Link>
             ))}
           </div>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu

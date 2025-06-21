@@ -1,5 +1,3 @@
-export const  role = "admin";
-
 
 export const ClientData= [
     {

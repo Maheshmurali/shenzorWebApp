@@ -1,11 +1,15 @@
+
 import Image from "next/image"
 import Link from "next/link"
 import Logo from '@/public/panellogo.png'
 import Menu from "../Components/Menu"
 import NavBAr from "../Components/NavBar"
-import {role} from '@/lib/data'
+import { currentUser } from "@clerk/nextjs/server"
 
-export default function AuthUserLayout( {children} ){
+
+export default async function AuthUserLayout( {children} ){
+        const user = await currentUser()
+          const role = user?.publicMetadata.role as string
     const userData = 
         {
             name : "Shenzor",

@@ -68,7 +68,7 @@ const renderRow = (item: client) => (
       <td className="hidden xl:table-cell">{item.contactperson}</td>
       <td>
         <div className="flex item-center gap-2">
-        <Link href={`client/${item.id}`}>
+        <Link href={`clients/${item.id}`}>
             <button className="w-7 h-7 flex item-center justify-center ">
               <Image src={View} 
               alt='Profile View' 

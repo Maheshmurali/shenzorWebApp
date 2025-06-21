@@ -1,15 +1,17 @@
 import MainHeader from "./component/homepage/main-header";
 import { FooterSection } from "./component/footer";
+import {ClerkProvider} from "@clerk/nextjs"
 
 export default function GlobalUserLayOut( {children} : Readonly<{
     children: React.ReactNode;
   }> ){
     return (
-        <div>
-             <MainHeader />
+        <ClerkProvider>
+            <div>
+               <MainHeader />
                 {children}
-             <FooterSection />
-        </div>
-      
+              <FooterSection />
+             </div>
+      </ClerkProvider>
     )
 }

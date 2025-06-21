@@ -61,7 +61,7 @@ export default function Services() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6"><span className='text-main'>O</span>ur Services</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">SERVICES</h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Comprehensive pipeline inspection and maintenance solutions
             </p>
@@ -90,7 +90,7 @@ export default function Services() {
                       <span className="text-white">{feature}</span>
                     </li>
                   ))}
-                  <Link href='/products' className="mt-8">
+                  <Link href='/login' className="mt-8">
                     <button className="bg-gray90 mt-8 hover:bg-main text-white px-8 flex gap-x-2 items-center py-3 rounded-lg text-lg font-semibold 
                      transition-colors">More<MdKeyboardDoubleArrowRight className="text-2xl items-center"/></button>
                   </Link>
