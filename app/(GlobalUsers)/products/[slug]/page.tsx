@@ -22,7 +22,7 @@ import {
 import { motion } from "framer-motion";
 
 const products = {
-  "cctv-inspection": {
+  "iPEK": {
     title: "CCTV Pipeline Inspection",
     description:
       "High-definition camera inspection for detailed pipe assessment",
@@ -46,7 +46,7 @@ const products = {
       "Compliance with regulatory requirements",
     ],
   },
-  "leak-detection": {
+  "wincan": {
     title: "Leak Detection Services",
     description: "Advanced acoustic leak detection and pressure testing",
     image: img2,
@@ -69,7 +69,7 @@ const products = {
       "Improve system efficiency",
     ],
   },
-  maintenance: {
+  enz: {
     title: "Pipeline Maintenance",
     description: "Preventive maintenance and repair services",
     image: img3,
@@ -92,7 +92,7 @@ const products = {
       "Ensure regulatory compliance",
     ],
   },
-  emergency: {
+  dietmarkaiser: {
     title: "Emergency Response",
     description: "24/7 emergency pipeline inspection and repair",
     image: img4,
@@ -138,7 +138,53 @@ const products = {
       "Strategic planning support",
     ],
   },
-  specialized: {
+  ims: {
+    title: "Specialized Inspections",
+    description: "Custom inspection solutions for complex pipeline systems",
+    image: img4,
+    icon: PipeIcon,
+    fullDescription:
+      "Our Specialized Inspections service offers customized solutions for complex pipeline systems. We utilize advanced technology and specialized equipment to address unique inspection challenges and provide detailed assessments.",
+    features: [
+      "Custom inspection protocols",
+      "Advanced technology utilization",
+      "Complex system expertise",
+      "Detailed documentation",
+      "Specialized equipment",
+      "Expert analysis",
+    ],
+    benefits: [
+      "Tailored solutions",
+      "Comprehensive assessment",
+      "Expert recommendations",
+      "Detailed reporting",
+      "Technical compliance",
+    ],
+  },
+  envirobot: {
+    title: "Specialized Inspections",
+    description: "Custom inspection solutions for complex pipeline systems",
+    image: img4,
+    icon: PipeIcon,
+    fullDescription:
+      "Our Specialized Inspections service offers customized solutions for complex pipeline systems. We utilize advanced technology and specialized equipment to address unique inspection challenges and provide detailed assessments.",
+    features: [
+      "Custom inspection protocols",
+      "Advanced technology utilization",
+      "Complex system expertise",
+      "Detailed documentation",
+      "Specialized equipment",
+      "Expert analysis",
+    ],
+    benefits: [
+      "Tailored solutions",
+      "Comprehensive assessment",
+      "Expert recommendations",
+      "Detailed reporting",
+      "Technical compliance",
+    ],
+  },
+  bwelltechnology: {
     title: "Specialized Inspections",
     description: "Custom inspection solutions for complex pipeline systems",
     image: img4,
@@ -253,7 +299,7 @@ export default function ProductPage() {
                 </Card>
 
                 <div className="mt-8 flex gap-4">
-                  <Link href='/login'>
+                  <Link href='/sign-in'>
                     <Button size="lg">Request Service</Button>
                   </Link>
                 </div>
