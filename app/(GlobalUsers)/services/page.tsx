@@ -65,7 +65,7 @@ export default function Services() {
   }, []);
 
   if (isLoading) {
-    return <Loading message="Fetching...." size="lg" />;
+    return <Loading message="Fetching Services...." size="lg" />;
   }
   return (
     <main className="min-h-screen bg-drakGray">
