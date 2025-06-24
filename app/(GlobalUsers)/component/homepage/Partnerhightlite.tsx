@@ -6,6 +6,7 @@ const products = [
     name: "iPEK",
     title:"Rovion",
     image: "/partners/Rovion.jpg",
+    link:'/iPEK',
     description:
       "ROVION is built with flexibility in mind. Fully scalable and with 100% compatible components, it’s tailored to fit your inspection needs, allowing for precise evaluations of pipe diameters ranging from DN100 to DN2000 .",
   },
@@ -13,6 +14,7 @@ const products = [
     name: "WinCan",
     title: "WinCanVX",
     image: "/partners/WinCanVX.png",
+    link:'/wincan',
     description:
       "WinCan was the first sewer inspection software ever developed and remains the most trusted brand in the market. Commitment to innovation has helped us revolutionize the way you gain insight from inspection data—insight that helps you plan maintenance, improve performance and achieve compliance",
  },
@@ -20,6 +22,7 @@ const products = [
     name: "DietmarKaiser",
     title: "DYNA Combi",
     image: "/partners/DYNA Combi.jpg",
+    link:'/dietmarkiser',
     description:
       "The proven combination of pumps, components and assemblies from our own production make the DYNA Combi unique.This means that individual customer wishes and requirements can be optimally implemented.",
   },
@@ -27,6 +30,7 @@ const products = [
     name: "enz",
     title :"eBulldog",
     image: "/partners/eBulldog.png",
+    link:'/enz',
     description:
       "The enz® Camera Nozzle adds a new dimension to the enz® nozzle product range! The modular design allows universal use with all nozzle types, such as the eBomb, the eBulldog or the eScraper, and thus guarantees streak-free, all-around cleaning in every application.",
     },
@@ -34,6 +38,7 @@ const products = [
     name: "IMS Robotics",
     title :"DRIVEpluse",
     image: "/partners/DRIVEpluse.png",
+    link:'/ims',
     description:
       "The DRIVEplus CLEANER enables fast and reliable removal of deposits. concrete other materials using ultra high pressure water up to 2,500 bar. The ultraater pressure adaptation is versatile and suitable for main sewers with diame1rom DN 200 to DN 600. The rotary swivel drive (DSA), which can be rotated.",
   },
@@ -114,7 +119,7 @@ function PartnerHighlites() {
                     <p className="text-white mb-4 md:mb-6">
                       {product.description}
                     </p>
-                   <Link href={`/products/${product.id}`} className="bg-blue-500 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg hover:bg-blue-600 
+                   <Link href={`/products/${product.link}`} className="bg-blue-500 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg hover:bg-blue-600 
                         transition-colors w-fit">
                       View Details
                     </Link>
