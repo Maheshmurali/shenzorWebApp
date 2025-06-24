@@ -1,12 +1,35 @@
 'use client';
-
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Star, ShoppingCart } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
+import iPEK from "@/assets/products/iPEK/Ipek.webp"
+import crawler from "@/assets/products/iPEK/mainline crawler.png"
+import lateral from "@/assets/products/iPEK/lateral.png"
+import pushcam from "@/assets/products/iPEK/pushcam.png"
+import zoomcamera from "@/assets/products/iPEK/zoomcamera.png"
+import manholecamera from "@/assets/products/iPEK/manholecamera.png"
+import videonozzle from "@/assets/products/iPEK/videonozzles.png"
+import wincan from "@/assets/products/wincan/wincan.png"
+import enz from "@/assets/products/enz/EnzCam.png"
+import bulldog37hd from "@/assets/products/enz/Bulldog-37HD.png"
+import bulldog60hd from "@/assets/products/enz/Bulldog-60HD-130HD.png"
+import rgs from "@/assets/products/enz/rgs-hrh-kbr-kbrv.png"
+import ub360 from "@/assets/products/enz/Rohre-ueber-30-mm.png"
+import dietmarkaiser from "@/assets/products/dietmarkaiser/DYNA Combi.jpg"
+import dynacombi from "@/assets/products/dietmarkaiser/dyna-combi.jpg"
+import envirobot from "@/assets/products/envirobot/viper.png"
+import viperlong from "@/assets/products/envirobot/viper-long.png"
+import vipercomapct from "@/assets/products/envirobot/viper-compact.jpg"
+import viperlight from "@/assets/products/envirobot/viper-light.jpg"
+import bewll from "@/assets/products/bwelltechnology/bwell.webp"
+import phoenix180 from "@/assets/products/bwelltechnology/phonix-180c.png"
+import phoenix100 from "@/assets/products/bwelltechnology/phoenix.png"
+import snake from "@/assets/products/bwelltechnology/snake1000-1.png"
+import ims from "@/assets/products/ims/ims Robotics.png"
 // Types
+
 interface Partner {
   id: string;
   name: string;
@@ -17,40 +40,48 @@ interface Product {
   id: string;
   name: string;
   description: string;
-  price: number;
   image: string;
   partnerId: string;
   partnerName: string;
   category?: string;
   inStock?: boolean;
-  rating?: number;
 }
 
 // Dummy Data
 const partners: Partner[] = [
   {
-    id: 'tech-solutions',
-    name: 'Tech Solutions',
+    id: 'ipek',
+    name: 'iPEK',
     description: 'Leading technology solutions provider'
   },
   {
-    id: 'eco-products',
-    name: 'Eco Products',
-    description: 'Sustainable and eco-friendly products'
+    id: 'wincan',
+    name: 'WinCan',
+    description: 'Industry-leading sewer inspection software trusted by professionals worldwide with comprehensive data management and reporting capabilities'
   },
   {
-    id: 'luxury-brands',
-    name: 'Luxury Brands',
+    id: 'enz-technik',
+    name: 'enz® technik',
     description: 'Premium luxury lifestyle products'
   },
   {
-    id: 'health-wellness',
-    name: 'Health & Wellness',
-    description: 'Health and wellness solutions'
+    id: 'dietmarkaiser',
+    name: 'DietmarKaiser',
+    description: 'Proven combination of pumps, components and assemblies from our own production making the DYNA Combi unique in the industry.'
   },
   {
-    id: 'home-living',
-    name: 'Home & Living',
+    id: 'ims-robotics',
+    name: 'IMS Robitics',
+    description: 'Modern home and living essentials'
+  },
+   {
+    id: 'envirobot',
+    name: 'Envirobot',
+    description: 'Modern home and living essentials'
+  },
+   {
+    id: 'bwell-technology',
+    name: 'Bwell Technology',
     description: 'Modern home and living essentials'
   }
 ];
@@ -58,40 +89,44 @@ const partners: Partner[] = [
 const products: Product[] = [
   // Tech Solutions Products
   {
-    id: 'ts-001',
-    name: 'Wireless Earbuds Pro',
-    description: 'Premium wireless earbuds with noise cancellation and 24-hour battery life.',
-    price: 199.99,
-    image: 'https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&cs=tinysrgb&w=500',
-    partnerId: 'tech-solutions',
-    partnerName: 'Tech Solutions',
-    category: 'Electronics',
+    id: 'p-001',
+    name: 'Mainline Inspection Crawlers',
+    description: 'High-definition camera inspection for detailed pipe assessment.',
+    image: iPEK,
+    partnerId: 'ipek',
+    partnerName: 'iPEK',
+    category: 'Swer Inspection',
     inStock: true,
-    rating: 4.8
   },
   {
-    id: 'ts-002',
-    name: 'Smart Watch Series X',
-    description: 'Advanced fitness tracking with health monitoring and GPS navigation.',
-    price: 349.99,
-    image: 'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=500',
-    partnerId: 'tech-solutions',
-    partnerName: 'Tech Solutions',
-    category: 'Wearables',
+    id: 'p-002',
+    name: 'Lateral Launch Crawlers',
+    description: 'ROVION SAT II assesses laterals directly from a mainline with unrivaled speed, range, articulation and pushing force.',
+    image: lateral,
+    partnerId: 'ipek',
+    partnerName: 'iPEK',
+    category: 'Swer Inspection',
     inStock: true,
-    rating: 4.9
   },
   {
     id: 'ts-003',
-    name: 'Ultra HD Webcam',
-    description: '4K webcam with auto-focus and noise-reducing microphone for professional streaming.',
-    price: 89.99,
-    image: 'https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=500',
-    partnerId: 'tech-solutions',
-    partnerName: 'Tech Solutions',
-    category: 'Electronics',
+    name: 'Push Cam',
+    description: 'The AGILIOS system inspects laterals and clean-outs, offering touchscreen recording, defect logging, and up to 90° bend mobility for its pan & tilt camera',
+    image: pushcam,
+    partnerId: 'ipek',
+    partnerName: 'iPEK',
+    category: 'Swer Inspection',
     inStock: false,
-    rating: 4.6
+  },
+    {
+    id: 'ts-004',
+    name: 'Zoom Camera',
+    description: 'The wireless, tablet-controlled Quickview airHD rapidly assesses mainlines from the nearest manhole to determine where CCTV, cleaning or rehab is needed',
+    image: zoomcamera,
+    partnerId: 'ipek',
+    partnerName: 'iPEK',
+    category: 'Swer Inspection',
+    inStock: false,
   },
   
   // Eco Products
@@ -99,37 +134,32 @@ const products: Product[] = [
     id: 'ep-001',
     name: 'Bamboo Phone Case',
     description: 'Sustainable bamboo phone case with wireless charging compatibility.',
-    price: 29.99,
-    image: 'https://images.pexels.com/photos/4491461/pexels-photo-4491461.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: videonozzle,
     partnerId: 'eco-products',
     partnerName: 'Eco Products',
     category: 'Accessories',
     inStock: true,
-    rating: 4.4
   },
   {
     id: 'ep-002',
     name: 'Solar Power Bank',
     description: 'Eco-friendly solar-powered portable charger with 20,000mAh capacity.',
-    price: 79.99,
-    image: 'https://images.pexels.com/photos/4254555/pexels-photo-4254555.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: vipercomapct,
     partnerId: 'eco-products',
     partnerName: 'Eco Products',
     category: 'Power',
     inStock: true,
-    rating: 4.7
   },
   {
     id: 'ep-003',
     name: 'Reusable Water Bottle',
     description: 'Insulated stainless steel water bottle with temperature retention technology.',
-    price: 39.99,
-    image: 'https://images.pexels.com/photos/1342479/pexels-photo-1342479.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: enz,
     partnerId: 'eco-products',
     partnerName: 'Eco Products',
     category: 'Lifestyle',
     inStock: true,
-    rating: 4.5
+
   },
   
   // Luxury Brands
@@ -137,25 +167,21 @@ const products: Product[] = [
     id: 'lb-001',
     name: 'Premium Leather Wallet',
     description: 'Handcrafted Italian leather wallet with RFID protection and gold accents.',
-    price: 249.99,
-    image: 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: vipercomapct,
     partnerId: 'luxury-brands',
     partnerName: 'Luxury Brands',
     category: 'Accessories',
     inStock: true,
-    rating: 4.9
   },
   {
     id: 'lb-002',
     name: 'Designer Sunglasses',
     description: 'Limited edition designer sunglasses with polarized lenses and titanium frame.',
-    price: 599.99,
-    image: 'https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: vipercomapct,
     partnerId: 'luxury-brands',
     partnerName: 'Luxury Brands',
     category: 'Fashion',
     inStock: true,
-    rating: 5.0
   },
   
   // Health & Wellness
@@ -163,37 +189,31 @@ const products: Product[] = [
     id: 'hw-001',
     name: 'Yoga Mat Premium',
     description: 'Non-slip premium yoga mat with alignment guides and carrying strap.',
-    price: 89.99,
-    image: 'https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: enz,
     partnerId: 'health-wellness',
     partnerName: 'Health & Wellness',
     category: 'Fitness',
     inStock: true,
-    rating: 4.6
   },
   {
     id: 'hw-002',
     name: 'Meditation Cushion',
     description: 'Organic cotton meditation cushion with buckwheat hull filling for comfort.',
-    price: 59.99,
-    image: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: snake,
     partnerId: 'health-wellness',
     partnerName: 'Health & Wellness',
     category: 'Wellness',
     inStock: true,
-    rating: 4.8
   },
   {
     id: 'hw-003',
     name: 'Essential Oil Diffuser',
     description: 'Ultrasonic aromatherapy diffuser with LED lighting and timer settings.',
-    price: 49.99,
-    image: 'https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: snake,
     partnerId: 'health-wellness',
     partnerName: 'Health & Wellness',
     category: 'Wellness',
     inStock: false,
-    rating: 4.3
   },
   
   // Home & Living
@@ -201,37 +221,31 @@ const products: Product[] = [
     id: 'hl-001',
     name: 'Modern Table Lamp',
     description: 'Minimalist LED table lamp with touch controls and wireless charging base.',
-    price: 129.99,
-    image: 'https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: snake,
     partnerId: 'home-living',
     partnerName: 'Home & Living',
     category: 'Lighting',
     inStock: true,
-    rating: 4.7
   },
   {
     id: 'hl-002',
     name: 'Ceramic Plant Pot Set',
     description: 'Set of 3 handmade ceramic plant pots with drainage and saucers.',
-    price: 79.99,
-    image: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: dietmarkaiser,
     partnerId: 'home-living',
     partnerName: 'Home & Living',
     category: 'Decor',
     inStock: true,
-    rating: 4.4
   },
   {
     id: 'hl-003',
     name: 'Smart Home Hub',
     description: 'Voice-controlled smart home hub with compatibility for 500+ devices.',
-    price: 199.99,
-    image: 'https://images.pexels.com/photos/4210860/pexels-photo-4210860.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: dynacombi,
     partnerId: 'home-living',
     partnerName: 'Home & Living',
     category: 'Technology',
     inStock: true,
-    rating: 4.9
   }
 ];
 
@@ -282,12 +296,13 @@ function PartnerFilter({ partners, activePartnerId, onPartnerSelect }: {
 function ProductCard({ product }: { product: Product }) {
   return (
     <div className="group bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-      {/* Product Image */}
       <div className="relative aspect-square overflow-hidden">
-        <img
+        <Image
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          layout="fill"
+          objectFit="cover"
+          className="group-hover:scale-105 transition-transform duration-300"
         />
         {!product.inStock && (
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -301,7 +316,6 @@ function ProductCard({ product }: { product: Product }) {
         </div>
       </div>
 
-      {/* Product Info */}
       <div className="p-6">
         <div className="mb-2">
           <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition-colors">
@@ -309,48 +323,10 @@ function ProductCard({ product }: { product: Product }) {
           </h3>
           <p className="text-sm text-gray-500 mt-1">{product.category}</p>
         </div>
-        
+
         <p className="text-gray-600 text-sm mb-4 line-clamp-2">
           {product.description}
         </p>
-
-        {/* Rating */}
-        {product.rating && (
-          <div className="flex items-center mb-4">
-            <div className="flex items-center">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={cn(
-                    "w-4 h-4",
-                    i < Math.floor(product.rating!)
-                      ? "text-yellow-400 fill-current"
-                      : "text-gray-300"
-                  )}
-                />
-              ))}
-            </div>
-            <span className="text-sm text-gray-600 ml-2">{product.rating}</span>
-          </div>
-        )}
-
-        {/* Price and Action */}
-        <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-gray-900">
-            ${product.price}
-          </div>
-          <Button
-            size="sm"
-            className={cn(
-              "bg-orange-500 hover:bg-orange-600 text-white transition-colors",
-              !product.inStock && "opacity-50 cursor-not-allowed"
-            )}
-            disabled={!product.inStock}
-          >
-            <ShoppingCart className="w-4 h-4 mr-2" />
-            {product.inStock ? 'Add to Cart' : 'Unavailable'}
-          </Button>
-        </div>
       </div>
     </div>
   );

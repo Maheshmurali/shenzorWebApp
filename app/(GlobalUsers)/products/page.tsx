@@ -11,7 +11,6 @@ import dietmarkaiser from "@/assets/products/dietmarkaiser/DYNA Combi.jpg"
 import envirobot from "@/assets/products/envirobot/viper.png"
 import bwell from "@/assets/products/bwelltechnology/bwell.webp"
 import { motion } from "framer-motion";
-
 const products = [
   {
     id: 1,
@@ -66,8 +65,9 @@ const products = [
 
 export default function ProductsPage() {
   return (
+   
     <div className="min-h-screen bg-gradient-to-b bg-drakGray to-slate-100 py-28 pt-12 mt-4">
-    <motion.div
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -116,5 +116,6 @@ export default function ProductsPage() {
       </div>
     </motion.div>
     </div>
+    
   );
 }

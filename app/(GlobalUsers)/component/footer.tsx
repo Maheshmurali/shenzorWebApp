@@ -15,7 +15,7 @@ import { FaWhatsapp } from "react-icons/fa";
         <Link href='/' className="">
             <Image src={logo} alt="footer logo" width={200} height={150}/>
         </Link>
-        <p className="text-white mt-4">Shenzor excels in cutting-edge technology and advanced tools,
+        <p className="text-white mt-4">Shenzor® excels in cutting-edge technology and advanced tools,
            <br />backed by over a decade of expertise.</p>
       </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lx:grid-cols-3 gap-8 md:w-1/2 mt-4 md:mt-0">
@@ -76,7 +76,7 @@ import { FaWhatsapp } from "react-icons/fa";
         </div>
       </div>
       <div className="mt-8 pt-8 border-t border-gray-800 text-center text-main">
-          <p>&copy; {year} Shenzor. All rights reserved.</p>
+          <p>&copy; {year} Shenzor®. All rights reserved.</p>
         </div>
         <div className=" text-center text-main cursor-pointer">
           <p>Privacy&policy</p>

@@ -135,16 +135,17 @@ export default function About() {
               <h2 className="text-3xl font-bold mb-6 text-gray-500">
                 
               </h2>
-              <div className="rounded-lg overflow-hidden blure-sm">
+              <div className="relative">
                 <Image
                   src={about}
                   alt="Team at work"
-                  className=""
+                  width={500}
+                  height={300}
+                  className="w-full h-[250px] md:h-[400px] object-cover rounded-lg shadow-lg"
                 />
-              </div>
-              <div className="lg:absolute lg:top-52 xl:top-[16rem] bg-drakGray">
-                <p className="text-white mb-4 text-md text-xs md:text-sm mt-4 xl:text-xl">
-                  Founded in 2016, SHENZOR provides inspection solutions and
+                <div className="lg:absolute lg:top-96 xl:top-[24rem]">
+                <p className="text-white mb-4 text-md text-xs md:text-sm mt-8 xl:text-xl">
+                  Founded in 2016, SHENZOR® provides inspection solutions and
                   services for storm & sewer pipelines using SHENZOR® registered
                   systems and robots. In addition, we’re a trusted partner for
                   leading companies in the field of CCTV pipe inspection,
@@ -157,7 +158,7 @@ export default function About() {
                   and deposits settled.
                 </p>
                 <p className="text-white mb-4 text-md text-xs md:text-sm mt-4 xl:text-xl">
-                  In addition to providing inspection solutions, SHENZOR also
+                  In addition to providing inspection solutions, SHENZOR® also
                   provides technical support, local maintenance services both
                   preventive and corrective, training & certification through
                   our partnership with Develop Training UK.
@@ -169,6 +170,8 @@ export default function About() {
                   owners and operating entities, both in KSA & the region.
                 </p>
               </div>
+              </div>
+              
             </motion.div>
           </div>
         </div>
@@ -176,7 +179,7 @@ export default function About() {
 
       {/* Partners */}
       
-        <section className="mt-24 xl:mt-24 py-4 lg:px-16 text-center">
+        <section className="lg:mt-40 xl:mt-64 py-4 lg:px-16 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
