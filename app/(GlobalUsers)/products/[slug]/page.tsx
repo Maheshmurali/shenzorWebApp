@@ -1,312 +1,234 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import Image from "next/image";
+'use client';
+import { useState, useEffect, use } from "react";
+import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import img1 from "@/assets/image1.jpg"
-import img2 from "@/assets/image2.jpg"
-import img3 from "@/assets/image3.jpg"
-import img4 from "@/assets/image4.png"
-import {
-  Camera,
-  PipetteIcon as PipeIcon,
-  Shield,
-  Search,
-  Activity,
-  Settings,
-  ArrowLeft,
-  CheckCircle2,
-} from "lucide-react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { ArrowLeft, CheckCircle, Zap, Eye, Wrench,} from "lucide-react";
+import { partnerProducts } from "@/lib/data";
 
-const products = {
-  "iPEK": {
-    title: "CCTV Pipeline Inspection",
-    description:
-      "High-definition camera inspection for detailed pipe assessment",
-    image: img1,
-    icon: Camera,
-    fullDescription:
-      "Our CCTV Pipeline Inspection service utilizes state-of-the-art camera technology to provide detailed visual assessments of your pipeline infrastructure. This non-invasive method allows us to identify issues such as cracks, blockages, corrosion, and structural defects without any excavation.",
-    features: [
-      "High-definition video recording",
-      "Real-time monitoring and assessment",
-      "Detailed inspection reports",
-      "Digital documentation and archiving",
-      "Non-destructive inspection method",
-      "Immediate problem identification",
-    ],
-    benefits: [
-      "Prevent costly repairs through early detection",
-      "Minimize disruption to operations",
-      "Accurate diagnosis of pipeline issues",
-      "Cost-effective maintenance planning",
-      "Compliance with regulatory requirements",
-    ],
-  },
-  "wincan": {
-    title: "Leak Detection Services",
-    description: "Advanced acoustic leak detection and pressure testing",
-    image: img2,
-    icon: Search,
-    fullDescription:
-      "Our advanced Leak Detection Services combine acoustic technology with pressure testing to accurately locate and assess pipeline leaks. We use sophisticated equipment to detect even the smallest leaks, helping prevent water waste and potential infrastructure damage.",
-    features: [
-      "Acoustic leak detection technology",
-      "Pressure testing capabilities",
-      "Non-invasive detection methods",
-      "Precise leak location identification",
-      "Comprehensive system analysis",
-      "Emergency response available",
-    ],
-    benefits: [
-      "Reduce water loss and associated costs",
-      "Prevent property damage",
-      "Minimize environmental impact",
-      "Extend pipeline infrastructure life",
-      "Improve system efficiency",
-    ],
-  },
-  enz: {
-    title: "Pipeline Maintenance",
-    description: "Preventive maintenance and repair services",
-    image: img3,
-    icon: Settings,
-    fullDescription:
-      "Our comprehensive Pipeline Maintenance service ensures your pipeline infrastructure remains in optimal condition. We provide regular inspections, cleaning, and preventive maintenance to extend the life of your systems and prevent costly emergencies.",
-    features: [
-      "Scheduled maintenance programs",
-      "Pipeline cleaning services",
-      "Repair and replacement",
-      "System optimization",
-      "Preventive maintenance planning",
-      "24/7 support availability",
-    ],
-    benefits: [
-      "Extend system lifespan",
-      "Reduce emergency repairs",
-      "Optimize system performance",
-      "Lower long-term costs",
-      "Ensure regulatory compliance",
-    ],
-  },
-  dietmarkaiser: {
-    title: "Emergency Response",
-    description: "24/7 emergency pipeline inspection and repair",
-    image: img4,
-    icon: Activity,
-    fullDescription:
-      "Our Emergency Response team is available 24/7 to address urgent pipeline issues. We provide rapid response times and efficient solutions to minimize downtime and prevent further damage to your infrastructure.",
-    features: [
-      "24/7 availability",
-      "Rapid response times",
-      "Emergency repair capabilities",
-      "Mobile inspection units",
-      "Temporary and permanent solutions",
-      "Priority scheduling",
-    ],
-    benefits: [
-      "Minimize downtime",
-      "Prevent further damage",
-      "Protect property and assets",
-      "Reduce repair costs",
-      "Peace of mind",
-    ],
-  },
-  assessment: {
-    title: "Infrastructure Assessment",
-    description: "Comprehensive pipeline infrastructure evaluation",
-    image: img3,
-    icon: Shield,
-    fullDescription:
-      "Our Infrastructure Assessment service provides a thorough evaluation of your entire pipeline system. We analyze current conditions, identify potential issues, and develop comprehensive maintenance and upgrade strategies.",
-    features: [
-      "Complete system evaluation",
-      "Risk assessment",
-      "Condition mapping",
-      "Asset management planning",
-      "Regulatory compliance review",
-      "Future needs analysis",
-    ],
-    benefits: [
-      "Informed decision-making",
-      "Long-term cost savings",
-      "Improved system reliability",
-      "Regulatory compliance",
-      "Strategic planning support",
-    ],
-  },
-  ims: {
-    title: "Specialized Inspections",
-    description: "Custom inspection solutions for complex pipeline systems",
-    image: img4,
-    icon: PipeIcon,
-    fullDescription:
-      "Our Specialized Inspections service offers customized solutions for complex pipeline systems. We utilize advanced technology and specialized equipment to address unique inspection challenges and provide detailed assessments.",
-    features: [
-      "Custom inspection protocols",
-      "Advanced technology utilization",
-      "Complex system expertise",
-      "Detailed documentation",
-      "Specialized equipment",
-      "Expert analysis",
-    ],
-    benefits: [
-      "Tailored solutions",
-      "Comprehensive assessment",
-      "Expert recommendations",
-      "Detailed reporting",
-      "Technical compliance",
-    ],
-  },
-  envirobot: {
-    title: "Specialized Inspections",
-    description: "Custom inspection solutions for complex pipeline systems",
-    image: img4,
-    icon: PipeIcon,
-    fullDescription:
-      "Our Specialized Inspections service offers customized solutions for complex pipeline systems. We utilize advanced technology and specialized equipment to address unique inspection challenges and provide detailed assessments.",
-    features: [
-      "Custom inspection protocols",
-      "Advanced technology utilization",
-      "Complex system expertise",
-      "Detailed documentation",
-      "Specialized equipment",
-      "Expert analysis",
-    ],
-    benefits: [
-      "Tailored solutions",
-      "Comprehensive assessment",
-      "Expert recommendations",
-      "Detailed reporting",
-      "Technical compliance",
-    ],
-  },
-  bwelltechnology: {
-    title: "Specialized Inspections",
-    description: "Custom inspection solutions for complex pipeline systems",
-    image: img4,
-    icon: PipeIcon,
-    fullDescription:
-      "Our Specialized Inspections service offers customized solutions for complex pipeline systems. We utilize advanced technology and specialized equipment to address unique inspection challenges and provide detailed assessments.",
-    features: [
-      "Custom inspection protocols",
-      "Advanced technology utilization",
-      "Complex system expertise",
-      "Detailed documentation",
-      "Specialized equipment",
-      "Expert analysis",
-    ],
-    benefits: [
-      "Tailored solutions",
-      "Comprehensive assessment",
-      "Expert recommendations",
-      "Detailed reporting",
-      "Technical compliance",
-    ],
-  },
-};
+export default function ProductSlugPage({ params }: { params: Promise<{ slug: string }> }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [partner, setPartner] = useState<any>(null);
+  
+  // Unwrap the params Promise using React.use()
+  const resolvedParams = use(params);
 
-export default function ProductPage() {
-  const params = useParams();
-  const slug = params.slug as string;
-  const product = products[slug as keyof typeof products];
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      const partnerData = partnerProducts[resolvedParams.slug as keyof typeof partnerProducts];
+      if (partnerData) {
+        setPartner(partnerData);
+      }
+      setIsLoading(false);
+    }, 1000);
 
-  if (!product) {
+    return () => clearTimeout(timer);
+  }, [resolvedParams.slug]);
+
+  if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900">
-            Product Not Found
-          </h1>
-          <Link href="/products">
-            <Button className="mt-8">
-              <ArrowLeft className="mr-2 h-4 w-4 text-black" />
-              Back to Products
-            </Button>
-          </Link>
-        </div>
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center"
+        >
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            className="w-16 h-16 border-4 border-main border-t-transparent rounded-full mx-auto mb-4"
+          />
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-white text-lg font-medium"
+          >
+            Loading product information...
+          </motion.p>
+        </motion.div>
       </div>
     );
   }
 
-  const Icon = product.icon;
+  if (!partner) {
+    notFound();
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-12 mt-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <Link href="/products">
-            <Button
-              variant="ghost"
-              className="mb-8 text-black border border-black hover:bg-main "
-            >
-              <ArrowLeft className="mr-2 h-4 w-4 text-black " />
-              Back to Products
-            </Button>
-          </Link>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
+    <div className="min-h-screen bg-drakGray">
+      {/* Header Section */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="bg-drakGray py-16"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/products"
+            className="inline-flex items-center text-blue-200 hover:text-white transition-colors mb-6 py-8"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="relative h-[400px] lg:h-[600px]">
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  fill
-                  className="object-cover rounded-lg"
-                />
-                <div className="absolute top-4 right-4 bg-white/90 p-3 rounded-full">
-                  <Icon className="h-6 w-6 text-primary" />
-                </div>
-              </div>
-
-              <div>
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900 mb-4">
-                  {product.title}
-                </h1>
-                <p className="text-lg text-muted-foreground mb-8">
-                  {product.fullDescription}
-                </p>
-
-                <Card className="mb-8 p-6">
-                  <h2 className="text-2xl font-semibold mb-4">Key Features</h2>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {product.features.map((feature, index) => (
-                      <li key={index} className="flex items-center">
-                        <CheckCircle2 className="h-5 w-5 text-primary mr-2" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
-
-                <Card className="p-6">
-                  <h2 className="text-2xl font-semibold mb-4">Benefits</h2>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {product.benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-center">
-                        <CheckCircle2 className="h-5 w-5 text-primary mr-2" />
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
-
-                <div className="mt-8 flex gap-4">
-                  <Link href='/sign-in'>
-                    <Button size="lg">Request Service</Button>
-                  </Link>
-                </div>
-              </div>
+            <ArrowLeft className="w-5 h-5 mr-2 border rounded-full "/>
+            
+          </Link>
+          
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+              className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white p-2"
+            >
+              <Image
+                src={partner.logo}
+                alt={partner.name}
+                fill
+                className="object-cover rounded-xl"
+              />
+            </motion.div>
+            
+            <div className="flex-1">
+              <motion.h1
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-4xl md:text-5xl font-bold text-white mb-4"
+              >
+                {partner.name}
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+                className="text-xl text-blue-100 max-w-3xl leading-relaxed"
+              >
+                {partner.description}
+              </motion.p>
             </div>
-          </motion.div>
+          </div>
         </div>
+      </motion.div>
+
+      {/* Products Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="space-y-16"
+        >
+          {partner.products.map((product: any, index: number) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 + index * 0.2 }}
+              className="group"
+            >
+              <Card className="overflow-hidden bg-white/5 backdrop-blur-sm border-white/10 hover:bg-white/10 transition-all duration-500">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Product Image */}
+                  <div className="relative h-80 lg:h-full">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={product.width}
+                      height={product.height}
+                      className="absolute md:left-16 md:top-4 lg:top-24 lg:left-16 rounded-md"
+                    />
+                  </div>
+
+                  {/* Product Details */}
+                  <div className="p-8 lg:p-12">
+                    <CardHeader className="px-0 pt-0">
+                      <CardTitle className="text-3xl font-bold text-white mb-4  transition-colors">
+                        {product.name}
+                      </CardTitle>
+                      <p className="text-slate-300 text-lg leading-relaxed">
+                        {product.description}
+                      </p>
+                    </CardHeader>
+
+                    <CardContent className="px-0 space-y-8">
+                      {/* Key Features */}
+                      <div>
+                        <div className="flex items-center mb-4">
+                          <Zap className="w-6 h-6 text-yellow-400 mr-3" />
+                          <h3 className="text-xl font-semibold text-white">Key Features</h3>
+                        </div>
+                        <div className="grid grid-cols-1 gap-3">
+                          {product.keyFeatures.map((feature: string, idx: number) => (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 1 + index * 0.2 + idx * 0.1 }}
+                              className="flex items-center text-slate-300"
+                            >
+                              <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0" />
+                              <span>{feature}</span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <Separator className="bg-white/20" />
+
+                      {/* Specifications 
+                      <div>
+                        <div className="flex items-center mb-4">
+                          <Settings className="w-6 h-6 text-blue-400 mr-3" />
+                          <h3 className="text-xl font-semibold text-white">Technical Specifications</h3>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {Object.entries(product.specifications).map(([key, value], idx) => (
+                            <motion.div
+                              key={key}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 1.2 + index * 0.2 + idx * 0.1 }}
+                              className="bg-white/5 rounded-lg p-4 border border-white/10"
+                            >
+                              <dt className="text-sm font-medium text-slate-400 mb-1">{key}</dt>
+                              <dd className="text-white font-semibold">{value}</dd>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>*/}
+
+                      {/* Action Buttons */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.4 + index * 0.2 }}
+                        className="flex flex-col md:flex-row gap-4 pt-4 justify-center align-middle items-center"
+                      >
+                        <Link href='/about#contact'>
+                        <Button className="bg-black hover:bg-main text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+                          <Eye className="w-5 h-5 mr-2" />
+                          Request Demo
+                        </Button>
+                        </Link>
+                        <Link href='/sign-in'>
+                        <Button variant="outline" className="border-white/30 text-black hover:bg-white/10 px-8 py-3 rounded-lg font-medium transition-all duration-300">
+                          <Wrench className="w-5 h-5 mr-2" />
+                          Technical Support
+                        </Button>
+                        </Link>
+                      </motion.div>
+                    </CardContent>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

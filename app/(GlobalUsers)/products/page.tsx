@@ -3,13 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import iPEK from "@/assets/products/Ipek.webp"
-import wincan from "@/assets/products/wincan.png"
-import enz from "@/assets/products/EnzCam.png"
-import ims from "@/assets/products/ims Robotics.png"
-import dietmarkaiser from "@/assets/products/DYNA Combi.jpg"
-import envirobot from "@/assets/products/viper.png"
-import bwell from "@/assets/products/bwell.webp"
+import iPEK from "@/assets/products/iPEK/Ipek.webp"
+import wincan from "@/assets/products/wincan/wincan.png"
+import enz from "@/assets/products/enz/EnzCam.png"
+import ims from "@/assets/products/ims/ims Robotics.png"
+import dietmarkaiser from "@/assets/products/dietmarkaiser/DYNA Combi.jpg"
+import envirobot from "@/assets/products/envirobot/viper.png"
+import bwell from "@/assets/products/bwelltechnology/bwell.webp"
 import { motion } from "framer-motion";
 
 const products = [

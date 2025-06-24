@@ -90,7 +90,7 @@ export default function Services() {
                       <span className="text-white">{feature}</span>
                     </li>
                   ))}
-                  <Link href='/login' className="mt-8">
+                  <Link href='/sign-in' className="mt-8">
                     <button className="bg-gray90 mt-8 hover:bg-main text-white px-8 flex gap-x-2 items-center py-3 rounded-lg text-lg font-semibold 
                      transition-colors">More<MdKeyboardDoubleArrowRight className="text-2xl items-center"/></button>
                   </Link>

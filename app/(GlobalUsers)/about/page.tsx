@@ -213,7 +213,7 @@ export default function About() {
       
 
       {/* Contact Form */}
-      <section className="py-20 text-black mt-16">
+      <section id="contact" className="py-20 text-black mt-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
