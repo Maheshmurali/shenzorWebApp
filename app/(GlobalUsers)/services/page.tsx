@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Loading } from "@/components/ui/loading";
 import { Settings, Search, FileText, Award} from "lucide-react";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { useEffect, useState } from "react";
 const services = [
   {
     icon: Search,
@@ -51,6 +53,20 @@ const services = [
 ];
 
 export default function Services() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setIsLoading(false);
+    };
+
+    loadProducts();
+  }, []);
+
+  if (isLoading) {
+    return <Loading message="Fetching...." size="lg" />;
+  }
   return (
     <main className="min-h-screen bg-drakGray">
       <section className="bg-sub mt-16 py-20">

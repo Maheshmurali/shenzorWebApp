@@ -39,7 +39,7 @@ export function Loading({
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className={`${sizeClasses[size]} border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4`}
+          className={`${sizeClasses[size]} border-4 border-main border-t-transparent rounded-full mx-auto mb-4`}
         />
         <motion.p
           initial={{ opacity: 0, y: 10 }}

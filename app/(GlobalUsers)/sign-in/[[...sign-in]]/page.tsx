@@ -1,13 +1,13 @@
 'use client'
-
 import * as Clerk from '@clerk/elements/common'
 import * as SignIn from '@clerk/elements/sign-in'
 import { ArrowLeft, User } from 'lucide-react';
+import { Loading } from "@/components/ui/loading";
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function SignInPage() {
   
@@ -20,6 +20,21 @@ useEffect(() => {
       rout.push('/profile')
   }
 }}, [isLoaded, isSignedIn, user, rout]);
+
+const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setIsLoading(false);
+    };
+
+    loadProducts();
+  }, []);
+
+  if (isLoading) {
+    return <Loading message="Fetching..." size="lg" />;
+  }
 
   return (
     <div className="grid w-full flex-grow items-center bg-zinc-100 px-4 sm:justify-center py-28 relative">

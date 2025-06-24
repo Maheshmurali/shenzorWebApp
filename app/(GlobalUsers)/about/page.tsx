@@ -3,6 +3,7 @@ import about from "@/assets/About.jpg";
 import logo from "@/public/logo.png"
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Loading } from "@/components/ui/loading";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -23,6 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useEffect, useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -95,8 +97,23 @@ export default function About() {
     console.log(values);
     // Handle form submission here
   }
+  const [isLoading, setIsLoading] = useState(true);
+  
+    useEffect(() => {
+      const loadProducts = async () => {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        setIsLoading(false);
+      };
+  
+      loadProducts();
+    }, []);
+  
+    if (isLoading) {
+      return <Loading message="Fetching..." size="lg" />;
+    }
 
   return (
+
     <main className="min-h-screen bg-drakGray mt-12">
       {/* Hero Section */}
       <section className="bg-[#000001] py-20">
