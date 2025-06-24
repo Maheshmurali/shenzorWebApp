@@ -145,7 +145,7 @@ export default function ProductSlugPage({ params }: { params: Promise<{ slug: st
                   </div>
 
                   {/* Product Details */}
-                  <div className="p-8 lg:p-12">
+                  <div id={product.name} className="p-8 lg:p-12">
                     <CardHeader className="px-0 pt-0">
                       <CardTitle className="text-3xl font-bold text-white mb-4  transition-colors">
                         {product.name}

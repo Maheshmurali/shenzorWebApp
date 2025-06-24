@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-
-import iPEK from "@/assets/products/iPEK/Ipek.webp"
+import Link from 'next/link';
 import crawler from "@/assets/products/iPEK/mainline crawler.png"
 import lateral from "@/assets/products/iPEK/lateral.png"
 import pushcam from "@/assets/products/iPEK/pushcam.png"
@@ -12,18 +11,14 @@ import zoomcamera from "@/assets/products/iPEK/zoomcamera.png"
 import manholecamera from "@/assets/products/iPEK/manholecamera.png"
 import videonozzle from "@/assets/products/iPEK/videonozzles.png"
 import wincan from "@/assets/products/wincan/wincan.png"
-import enz from "@/assets/products/enz/EnzCam.png"
 import bulldog37hd from "@/assets/products/enz/Bulldog-37HD.png"
 import bulldog60hd from "@/assets/products/enz/Bulldog-60HD-130HD.png"
 import rgs from "@/assets/products/enz/rgs-hrh-kbr-kbrv.png"
 import ub360 from "@/assets/products/enz/Rohre-ueber-30-mm.png"
-import dietmarkaiser from "@/assets/products/dietmarkaiser/DYNA Combi.jpg"
 import dynacombi from "@/assets/products/dietmarkaiser/dyna-combi.jpg"
-import envirobot from "@/assets/products/envirobot/viper.png"
 import viperlong from "@/assets/products/envirobot/viper-long.png"
 import vipercomapct from "@/assets/products/envirobot/viper-compact.jpg"
 import viperlight from "@/assets/products/envirobot/viper-light.jpg"
-import bewll from "@/assets/products/bwelltechnology/bwell.webp"
 import phoenix180 from "@/assets/products/bwelltechnology/phonix-180c.png"
 import phoenix100 from "@/assets/products/bwelltechnology/phoenix.png"
 import snake from "@/assets/products/bwelltechnology/snake1000-1.png"
@@ -50,203 +45,240 @@ interface Product {
 // Dummy Data
 const partners: Partner[] = [
   {
-    id: 'ipek',
+    id: 'iPEK',
     name: 'iPEK',
-    description: 'Leading technology solutions provider'
+    description: ''
   },
   {
     id: 'wincan',
     name: 'WinCan',
-    description: 'Industry-leading sewer inspection software trusted by professionals worldwide with comprehensive data management and reporting capabilities'
+    description: ''
   },
   {
-    id: 'enz-technik',
+    id: 'enz',
     name: 'enz® technik',
-    description: 'Premium luxury lifestyle products'
+    description: ''
   },
   {
     id: 'dietmarkaiser',
     name: 'DietmarKaiser',
-    description: 'Proven combination of pumps, components and assemblies from our own production making the DYNA Combi unique in the industry.'
+    description: ''
   },
   {
-    id: 'ims-robotics',
+    id: 'ims',
     name: 'IMS Robitics',
-    description: 'Modern home and living essentials'
+    description: ''
   },
    {
     id: 'envirobot',
     name: 'Envirobot',
-    description: 'Modern home and living essentials'
+    description: ''
   },
    {
-    id: 'bwell-technology',
+    id: 'bwelltechnology',
     name: 'Bwell Technology',
-    description: 'Modern home and living essentials'
+    description: ''
   }
 ];
 
 const products: Product[] = [
-  // Tech Solutions Products
+
   {
     id: 'p-001',
     name: 'Mainline Inspection Crawlers',
     description: 'High-definition camera inspection for detailed pipe assessment.',
-    image: iPEK,
-    partnerId: 'ipek',
+    image: crawler,
+    partnerId: 'iPEK',
     partnerName: 'iPEK',
     category: 'Swer Inspection',
     inStock: true,
   },
-  {
-    id: 'p-002',
-    name: 'Lateral Launch Crawlers',
-    description: 'ROVION SAT II assesses laterals directly from a mainline with unrivaled speed, range, articulation and pushing force.',
-    image: lateral,
-    partnerId: 'ipek',
-    partnerName: 'iPEK',
-    category: 'Swer Inspection',
+     {
+    id: 'hl-004',
+    name: 'VIPER® Light',
+    description: 'Ultra HD Camera System',
+    image: viperlight,
+    partnerId: 'envirobot',
+    partnerName: 'Envirobot',
+    category: 'Viper',
     inStock: true,
   },
+
   {
     id: 'ts-003',
     name: 'Push Cam',
     description: 'The AGILIOS system inspects laterals and clean-outs, offering touchscreen recording, defect logging, and up to 90° bend mobility for its pan & tilt camera',
     image: pushcam,
-    partnerId: 'ipek',
+    partnerId: 'iPEK',
     partnerName: 'iPEK',
     category: 'Swer Inspection',
-    inStock: false,
+    inStock: true,
   },
-    {
-    id: 'ts-004',
-    name: 'Zoom Camera',
-    description: 'The wireless, tablet-controlled Quickview airHD rapidly assesses mainlines from the nearest manhole to determine where CCTV, cleaning or rehab is needed',
-    image: zoomcamera,
-    partnerId: 'ipek',
-    partnerName: 'iPEK',
-    category: 'Swer Inspection',
-    inStock: false,
-  },
-  
-  // Eco Products
-  {
-    id: 'ep-001',
-    name: 'Bamboo Phone Case',
-    description: 'Sustainable bamboo phone case with wireless charging compatibility.',
-    image: videonozzle,
-    partnerId: 'eco-products',
-    partnerName: 'Eco Products',
-    category: 'Accessories',
+ {
+    id: 'hl-007',
+    name: 'Pressurized Water Leak Detection and Inspection',
+    description: 'Snake is a modular-designed device for the inspection of pressure pipelines.',
+    image: snake,
+    partnerId: 'bwelltechnology',
+    partnerName: 'Bwell Technology',
+    category: 'Rehabilitation',
     inStock: true,
   },
   {
     id: 'ep-002',
-    name: 'Solar Power Bank',
-    description: 'Eco-friendly solar-powered portable charger with 20,000mAh capacity.',
-    image: vipercomapct,
-    partnerId: 'eco-products',
-    partnerName: 'Eco Products',
-    category: 'Power',
+    name: 'Manhole Camera',
+    description: 'With Quickview 360, a single operator can scan up to 80 manholes per day.',
+    image: manholecamera,
+    partnerId: 'iPEK',
+    partnerName: 'iPEK',
+    category: 'Swer Inspection',
     inStock: true,
   },
   {
     id: 'ep-003',
-    name: 'Reusable Water Bottle',
-    description: 'Insulated stainless steel water bottle with temperature retention technology.',
-    image: enz,
-    partnerId: 'eco-products',
-    partnerName: 'Eco Products',
-    category: 'Lifestyle',
+    name: 'WinCan VX',
+    description: 'Complete inspection software solution with advanced analytics and reporting features.',
+    image: wincan,
+    partnerId: 'wincan',
+    partnerName: 'WinCan',
+    category: 'Inspection SoftWare',
     inStock: true,
 
   },
-  
-  // Luxury Brands
   {
     id: 'lb-001',
-    name: 'Premium Leather Wallet',
-    description: 'Handcrafted Italian leather wallet with RFID protection and gold accents.',
-    image: vipercomapct,
-    partnerId: 'luxury-brands',
-    partnerName: 'Luxury Brands',
-    category: 'Accessories',
+    name: 'Bulldog 37HD',
+    description: 'enz® Bulldog 37HD rotary nozzle is designed for High Performance internal pipe cleaning up to 1000 bar.',
+    image: bulldog37hd,
+    partnerId: 'enz',
+    partnerName: 'enz®',
+    category: 'WaterJet Nozzles',
     inStock: true,
   },
-  {
-    id: 'lb-002',
-    name: 'Designer Sunglasses',
-    description: 'Limited edition designer sunglasses with polarized lenses and titanium frame.',
-    image: vipercomapct,
-    partnerId: 'luxury-brands',
-    partnerName: 'Luxury Brands',
-    category: 'Fashion',
+    {
+    id: 'p-002',
+    name: 'Lateral Launch Crawlers',
+    description: 'ROVION SAT II assesses laterals directly from a mainline with unrivaled speed, range, articulation and pushing force.',
+    image: lateral,
+    partnerId: 'iPEK',
+    partnerName: 'iPEK',
+    category: 'Swer Inspection',
     inStock: true,
   },
-  
-  // Health & Wellness
+ 
   {
     id: 'hw-001',
-    name: 'Yoga Mat Premium',
-    description: 'Non-slip premium yoga mat with alignment guides and carrying strap.',
-    image: enz,
-    partnerId: 'health-wellness',
-    partnerName: 'Health & Wellness',
-    category: 'Fitness',
+    name: 'RGS, HRH, KBR, KBRV',
+    description: 'Cleaning of heat exchangers in chemical and nuclear plants',
+    image: rgs,
+    partnerId: 'enz',
+    partnerName: 'enz®',
+    category: 'WaterJet Nozzles',
+    inStock: true,
+  },
+  {
+    id: 'ep-001',
+    name: 'Video Nozzle',
+    description: 'Plan cleaning, assess line condition and verify results with the wireless Xpection Lite video nozzle.',
+    image: videonozzle,
+    partnerId: 'iPEK',
+    partnerName: 'iPEK',
+    category: 'Swer Inspection',
     inStock: true,
   },
   {
     id: 'hw-002',
-    name: 'Meditation Cushion',
-    description: 'Organic cotton meditation cushion with buckwheat hull filling for comfort.',
-    image: snake,
-    partnerId: 'health-wellness',
-    partnerName: 'Health & Wellness',
-    category: 'Wellness',
+    name: 'UB 360',
+    description: 'Best performance for Large Pipes.',
+    image: ub360,
+    partnerId: 'enz',
+    partnerName: 'enz®',
+    category: 'WaterJet Nozzles',
     inStock: true,
   },
   {
     id: 'hw-003',
-    name: 'Essential Oil Diffuser',
-    description: 'Ultrasonic aromatherapy diffuser with LED lighting and timer settings.',
-    image: snake,
-    partnerId: 'health-wellness',
-    partnerName: 'Health & Wellness',
-    category: 'Wellness',
-    inStock: false,
+    name: 'DYNA Combi',
+    description: 'The proven combination of pumps, components and assemblies from our own production make the DYNA Combi unique.',
+    image: dynacombi,
+    partnerId: 'dietmarkaiser',
+    partnerName: 'Dietmarkaiser',
+    category: 'High-Pressure Jetting Unit',
+    inStock: true,
   },
-  
-  // Home & Living
   {
     id: 'hl-001',
-    name: 'Modern Table Lamp',
-    description: 'Minimalist LED table lamp with touch controls and wireless charging base.',
-    image: snake,
-    partnerId: 'home-living',
-    partnerName: 'Home & Living',
-    category: 'Lighting',
+    name: 'DRIVEpluse',
+    description: 'The DRIVEplus CLEANER enables fast and reliable removal of deposits.',
+    image: ims,
+    partnerId: 'ims',
+    partnerName: 'IMS ROBOTICS',
+    category: 'Cleaning',
     inStock: true,
   },
   {
     id: 'hl-002',
-    name: 'Ceramic Plant Pot Set',
-    description: 'Set of 3 handmade ceramic plant pots with drainage and saucers.',
-    image: dietmarkaiser,
-    partnerId: 'home-living',
-    partnerName: 'Home & Living',
-    category: 'Decor',
+    name: 'VIPER® Long range',
+    description: 'Ultra HD Camera System.',
+    image: viperlong,
+    partnerId: 'envirobot',
+    partnerName: 'Envirobot',
+    category: 'Viper',
+    inStock: true,
+  },
+
+   {
+    id: 'hl-005',
+    name: 'Phoenix-180C UV',
+    description: 'Comprehensive pipeline rehabilitation system designed for various materials including concrete, steel, and cast iron pipes',
+    image: phoenix180,
+    partnerId: 'bwelltechnology',
+    partnerName: 'Bwell Technology',
+    category: 'Rehabilitation',
     inStock: true,
   },
   {
-    id: 'hl-003',
-    name: 'Smart Home Hub',
-    description: 'Voice-controlled smart home hub with compatibility for 500+ devices.',
-    image: dynacombi,
-    partnerId: 'home-living',
-    partnerName: 'Home & Living',
-    category: 'Technology',
+    id: 'lb-002',
+    name: 'Bulldog 60HD-130HD',
+    description: 'The enz® Bulldog 60HD and 130HD rotary nozzle are designed for high performance internal pipe cleaning up to 1000 bar.',
+    image: bulldog60hd,
+    partnerId: 'enz',
+    partnerName: 'enz®',
+    category: 'waterJet Nozzles',
     inStock: true,
-  }
+  },
+  {
+    id: 'ts-004',
+    name: 'Zoom Camera',
+    description: 'The wireless, tablet-controlled Quickview airHD rapidly assesses mainlines from the nearest manhole to determine where CCTV, cleaning or rehab is needed',
+    image: zoomcamera,
+    partnerId: 'iPEK',
+    partnerName: 'iPEK',
+    category: 'Swer Inspection',
+    inStock: true,
+  },
+     {
+    id: 'hl-006',
+    name: 'PHOENIX 100s ',
+    description: 'PHOENIX 100s is an efficient UV curing system consisting of a main control unit, a light chain/light core.....',
+    image: phoenix100,
+    partnerId: 'bwelltechnology',
+    partnerName: 'Bwell Technology',
+    category: 'Rehabilitation',
+    inStock: true,
+  },
+   {
+    id: 'hl-003',
+    name: 'VIPER® Comapct',
+    description: 'Ultra HD Camera System',
+    image: vipercomapct,
+    partnerId: 'envirobot',
+    partnerName: 'Envirobot',
+    category: 'Viper',
+    inStock: true,
+    
+  },
+
 ];
 
 // Components
@@ -265,8 +297,8 @@ function PartnerFilter({ partners, activePartnerId, onPartnerSelect }: {
             className={cn(
               "flex-shrink-0 px-6 py-3 text-sm font-medium rounded-lg transition-all duration-200 border",
               activePartnerId === null
-                ? "bg-orange-500 text-white border-orange-500 shadow-md"
-                : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200"
+                ? "bg-main text-white border-main shadow-md"
+                : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-orange-50 hover:main hover:border-orange-200"
             )}
           >
             All
@@ -280,8 +312,8 @@ function PartnerFilter({ partners, activePartnerId, onPartnerSelect }: {
               className={cn(
                 "flex-shrink-0 px-6 py-3 text-sm font-medium rounded-lg transition-all duration-200 border whitespace-nowrap",
                 activePartnerId === partner.id
-                  ? "bg-orange-500 text-white border-orange-500 shadow-md"
-                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200"
+                  ? "bg-main text-white border-main shadow-md"
+                  : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-orange-50 hover:text-main hover:border-orange-200"
               )}
             >
               {partner.name}
@@ -295,6 +327,7 @@ function PartnerFilter({ partners, activePartnerId, onPartnerSelect }: {
 
 function ProductCard({ product }: { product: Product }) {
   return (
+    <Link href={`/products/${product.partnerId}/#${product.name}`} scroll={false}>
     <div className="group bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <div className="relative aspect-square overflow-hidden">
         <Image
@@ -310,7 +343,7 @@ function ProductCard({ product }: { product: Product }) {
           </div>
         )}
         <div className="absolute top-3 left-3">
-          <Badge variant="secondary" className="bg-white/90 text-gray-800">
+          <Badge variant="secondary" className="bg-white/90 text-black">
             {product.partnerName}
           </Badge>
         </div>
@@ -318,7 +351,7 @@ function ProductCard({ product }: { product: Product }) {
 
       <div className="p-6">
         <div className="mb-2">
-          <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 group-hover:text-orange-600 transition-colors">
+          <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 group-hover:text-main transition-colors">
             {product.name}
           </h3>
           <p className="text-sm text-gray-500 mt-1">{product.category}</p>
@@ -329,6 +362,7 @@ function ProductCard({ product }: { product: Product }) {
         </p>
       </div>
     </div>
+    </Link>
   );
 }
 
@@ -377,16 +411,16 @@ export default function ProductsPage() {
     : products;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-drakGray mt-24">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-drakGray border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-white mb-4">
               Our Products
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover amazing products from our trusted partners. Browse by partner or explore our entire collection.
+            <p className="text-3xl text-gray-300 max-w-3xl mx-auto">
+              Discover amazing products from our trusted partners. 
             </p>
           </div>
         </div>
@@ -405,10 +439,10 @@ export default function ProductsPage() {
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-semibold text-gray-900">
+              <h2 className="text-2xl font-semibold text-white">
                 {activePartner ? `${activePartner.name} Products` : 'All Products'}
               </h2>
-              <p className="text-gray-600 mt-1">
+              <p className="text-white mt-1">
                 {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''} found
                 {activePartner && (
                   <span className="ml-2 text-sm">
@@ -419,10 +453,10 @@ export default function ProductsPage() {
             </div>
             
             <div className="flex items-center space-x-4 mt-4 sm:mt-0">
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-white">
                 <span className="font-medium">{partners.length}</span> Partners
               </div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-white">
                 <span className="font-medium">{products.length}</span> Total Products
               </div>
             </div>
@@ -430,7 +464,9 @@ export default function ProductsPage() {
         </div>
 
         {/* Product Grid */}
+
         <ProductGrid products={products} activePartner={activePartnerId} />
+ 
       </div>
     </div>
   );

@@ -130,7 +130,7 @@ export default function Services() {
               Contact us today to discuss how our pipeline inspection services can help maintain 
               and protect your infrastructure.
             </p>
-            <Link href="/about/#contact">
+            <Link href="/about/#contact" scroll={false}>
               <button className="bg-gray90 hover:bg-main text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
                 Contact Us
               </button>
