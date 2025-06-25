@@ -6,7 +6,7 @@ const slides = [
   {
     image: "/carousel/image4.jpg",
     title: "Sewer Inspection Systems",
-    description: "FROM DN100 TO DN200"
+    description: "FROM DN100 TO DN2000"
   },
   {
     image: "/carousel/image1.jpg",
@@ -26,7 +26,7 @@ const slides = [
   {
     image: "/carousel/image6.png",
     title: "Sewer cleaning and hydro excavation",
-    description: "enz Camera & Standard Nozzles"
+    description: "enz® Camera & Standard Nozzles"
   },
   {
     image: "/carousel/image8.jpg",
