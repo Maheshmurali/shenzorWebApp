@@ -1,13 +1,13 @@
 import Image from "next/image"
 import Filter from '@/Assets/filter.png'
 import Table from "@/app/(admin)/Components/Table"
-import {role} from '@/lib/data'
 import Link from "next/link"
 import FormModal from "@/app/(admin)/Components/FormModal"
 import View from '@/Assets/view.png'
 import prisma from "@/lib/prisma"
 import { client } from "@prisma/client"
 import noAvatar from '@/public/noAvatar.png'
+import { role } from "@/lib/utility"
 //optional
 
 
@@ -81,6 +81,9 @@ const renderRow = (item: client) => (
           <Link href={`/list/client/${item.id}`} className="bg-gray-100 rounded-full"/>
             { role === "admin" && 
             <FormModal table="client" type="delete" id={item.id}/>
+            }
+            { role === "admin" && 
+            <FormModal table="client" type="update" id={item.id}/>
             }
         </div>
       </td>

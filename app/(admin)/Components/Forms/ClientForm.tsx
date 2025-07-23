@@ -1,42 +1,14 @@
 'use client'
 import React from 'react'
-import {z} from "zod"
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import InputField from '../InputField'
 import Image from 'next/image'
 import Upload from '@/Assets/upload.png'
+import { clientSchema,ClientSchema } from '@/lib/formValidationSchema'
+import { createClient } from '@/lib/serveractions'
 
-    const schema = z.object({
-        name: z.string().min(3, { message: 'Required' })
-        .max(10, {message: 'Max 10 Charactor '} ),
-        clientid:z.string(),
-        email: z.string().email({message:'Please Enter a Valid Email'}),
-        password:z.string().min(8,{message:'Minimun 8 Charractors Require'})
-        .regex(/[A-Z]/, { message: "Must contain at least one uppercase letter" })
-        .regex(/[\W_]/, { message: "Must contain at least one special character" }),
-        phone:z.string()
-        .min(10,{message: "In Valid Phone Number"})
-        .max(10,{message: "Invalid Phone Number"}),
-        location:z.string()
-        .max(12,{message: "Location Required"})
-        .min(2,{message: "Location Required"}),
-        addressline1: z.string()
-        .max(12,{message: " Required"})
-        .min(2,{message: " Required"}),
-        addressline2: z.string()
-        .max(12,{message: " Required"})
-        .min(2,{message: " Required"}),
-        addressline3: z.string()
-        .max(12,{message: " Required"})
-        .min(2,{message: " Required"}),
-        contactperson:z.string().min(1,{message:"Name Required"}),
-        image:z.instanceof(File,{message:"Client Image Required"}),
-        details:z.string().max(50,{message:"MustBe 50 Charactor"})
-        .optional()
-      }); 
-
-      type Inputs = z.infer<typeof schema>;
+  
 
 export default function Clientform( {type,data} : {type: "create" | "update"; data?: any} ) {
 
@@ -44,12 +16,13 @@ export default function Clientform( {type,data} : {type: "create" | "update"; da
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm <Inputs>({
-        resolver: zodResolver(schema),
+      } = useForm <ClientSchema>({
+        resolver: zodResolver(clientSchema),
       });
 
-      const onSubmit = handleSubmit(data=>{
+      const onSubmit = handleSubmit(async(data)=>{
         console.log(data)
+        await createClient(data)
       })
   return (
     
@@ -90,19 +63,19 @@ export default function Clientform( {type,data} : {type: "create" | "update"; da
             error={errors.location}/>
           <InputField 
             label="Street"
-            name="adressline1"
+            name="addressline1"
             defaultValue={data?.addressline1} 
             register={register}
             error={errors.addressline1}/>
             <InputField 
             label="Region"
-            name="adressline2"
+            name="addressline2"
             defaultValue={data?.addressline2} 
             register={register}
             error={errors.addressline2}/>
             <InputField 
             label="Country"
-            name="adressline3"
+            name="addressline3"
             defaultValue={data?.addressline3} 
             register={register}
             error={errors.addressline3}/>
@@ -123,12 +96,12 @@ export default function Clientform( {type,data} : {type: "create" | "update"; da
         <div className='flex flex-col gap-2 w-full'>
          <label className='text-xs text-gray-500'>Company Bio</label>
           <input type="text"
-             {...register("name")} 
+             {...register("details")} 
              defaultValue={data?.details}
              className='ring-[1.5px] ring-gray-300 rounded-md text-xs w-full p-4'/>
            {errors.details?.message && <p className='text-xs text-red-600'>{errors.details?.message.toString()}</p>}
         </div>
-        <div className='flex gap-2 w-full md:w-1/4 cursor-pointer'>
+        {/* <div className='flex gap-2 w-full md:w-1/4 cursor-pointer'>
          <label className='flex item-center text-xs text-gray-500b cursor-pointer' htmlFor="image">
           <Image src={Upload} alt='Client Profile image' width={28} height={28} />
           <span className='text-gray-500 items-center flex align-middle'>Upload a Photo</span>
@@ -138,9 +111,9 @@ export default function Clientform( {type,data} : {type: "create" | "update"; da
           {...register("image")}
           className='hidden'/>
            {errors.image?.message && <p className='text-xs text-red-600'>{errors.image?.message.toString()}</p>}
-        </div>
+        </div> */}
         <button className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500'>{type === "create" ? "Create" : "UpDate"}</button>
       </form>
-    </div>
+    </div> 
   )
 }

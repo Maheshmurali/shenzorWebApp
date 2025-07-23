@@ -2,11 +2,12 @@ import Complect from '@/Assets/statusok.png'
 import InComplect from '@/Assets/statusno.png'
 import Image from 'next/image'
 import Link from 'next/link'
-import {role,PreOrder, ClientMessages, Announancement} from '@/lib/data'
+import {PreOrder, ClientMessages, Announancement} from '@/lib/data'
 import Table from "@/app/(admin)/Components/Table"
 import Messages from '@/app/(admin)/Components/Messages'
 import Announancements from '@/app/(admin)/Components/Announancement'
 import FormModal from '@/app/(admin)/Components/FormModal'
+import { role } from '@/lib/utility'
 type Order={
   id: number,
   orderItem: string,
