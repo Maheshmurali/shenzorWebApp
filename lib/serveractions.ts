@@ -1,11 +1,10 @@
 'use server'
-import { revalidatePath } from "next/cache"
 import { ClientSchema } from "./formValidationSchema"
 import prisma from "./prisma"
-
-export const createClient = async (data: ClientSchema) => {
+type CurrentState = {success: boolean, error: boolean}
+export const createClient = async ( currentState:CurrentState, data: ClientSchema ) => {
     try {
-        const created = await prisma.client.create({
+        await prisma.client.create({
             data: {
                 name: data.name,
                 clientid: data.clientid,
@@ -17,14 +16,11 @@ export const createClient = async (data: ClientSchema) => {
                 addressline3: data.addressline3,
                 contactperson: data.contactperson,
                 details: data.details,
-               
             },
         });
-        revalidatePath("/clients")
-        return { success: true, error: false };
-    } catch (error: any) {
-        console.error("Prisma error:", error);
-        return { success: false, error: true, message: error.message };
+        return {success:true, error: false}
+    } catch (err) {
+        console.error(err);
+       return {success:false, error: true}
     }
 };
-

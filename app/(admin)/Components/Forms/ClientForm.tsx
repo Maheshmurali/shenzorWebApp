@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useActionState, useEffect, useTransition } from 'react'
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import InputField from '../InputField'
@@ -7,8 +7,8 @@ import Image from 'next/image'
 import Upload from '@/Assets/upload.png'
 import { clientSchema,ClientSchema } from '@/lib/formValidationSchema'
 import { createClient } from '@/lib/serveractions'
+import { toast } from 'react-toastify'
 
-  
 
 export default function Clientform( {type,data} : {type: "create" | "update"; data?: any} ) {
 
@@ -19,15 +19,24 @@ export default function Clientform( {type,data} : {type: "create" | "update"; da
       } = useForm <ClientSchema>({
         resolver: zodResolver(clientSchema),
       });
+      const [isPending, startTransition] = useTransition()
+      const [state, formAction] = useActionState(createClient, {success:false, error:false})
+       const onSubmit = handleSubmit((data) => {
+    startTransition(() => {
+      formAction(data)
+    })
+  })
 
-      const onSubmit = handleSubmit(async(data)=>{
-        console.log(data)
-        await createClient(data)
-      })
+  useEffect(()=>{
+    if (state.success){
+      toast(`Client has been ${type === 'create' ? "Added" : "UpDated"} Success!`)
+    }
+  },[state])
+
   return (
     
     <div>
-      <form action="" className='flex flex-col gap-8' onSubmit={onSubmit}>
+      <form  className='flex flex-col gap-8' onSubmit={onSubmit}>
         <h2 className='text-xl font-semibold'>Create New Client</h2>
         <span className='text-xs text-gray-400 font-semibold'>Client Information</span>
         <div className='flex justify-between flex-wrap gap-4'>
@@ -112,6 +121,7 @@ export default function Clientform( {type,data} : {type: "create" | "update"; da
           className='hidden'/>
            {errors.image?.message && <p className='text-xs text-red-600'>{errors.image?.message.toString()}</p>}
         </div> */}
+        {state.error && <span className='text-red-500'>Something Wrong...!</span>}
         <button className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500'>{type === "create" ? "Create" : "UpDate"}</button>
       </form>
     </div> 
