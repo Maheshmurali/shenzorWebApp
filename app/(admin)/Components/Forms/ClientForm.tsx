@@ -1,5 +1,5 @@
 'use client'
-import React, { useActionState, useEffect, useTransition } from 'react'
+import React, { useActionState, useEffect, useTransition, Dispatch, SetStateAction, } from 'react'
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import InputField from '../InputField'
@@ -8,9 +8,11 @@ import Upload from '@/Assets/upload.png'
 import { clientSchema,ClientSchema } from '@/lib/formValidationSchema'
 import { createClient } from '@/lib/serveractions'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
 
-export default function Clientform( {type,data} : {type: "create" | "update"; data?: any} ) {
+export default function Clientform( {type,data,setopen,} : {type: "create" | "update"; data?: any;
+   setopen:Dispatch<SetStateAction<boolean>>} ) {
 
     const {
         register,
@@ -27,9 +29,14 @@ export default function Clientform( {type,data} : {type: "create" | "update"; da
     })
   })
 
+  //mannual redirect
+  const router = useRouter()
+
   useEffect(()=>{
     if (state.success){
       toast(`Client has been ${type === 'create' ? "Added" : "UpDated"} Success!`)
+      setopen(false)
+      router.refresh()
     }
   },[state])
 

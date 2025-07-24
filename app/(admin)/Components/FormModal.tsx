@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 //import Clientform from "./Forms/ClientForm";
 import dynamic from "next/dynamic";
 import PartnerForm from "./Forms/PartnerForm";
@@ -13,12 +13,12 @@ const Clientform = dynamic(()=> import("./Forms/ClientForm"),{
 })
 // for select tables 
 const forms: {
-  [key:string]:(type: "create" | "update", data?:any) => JSX.Element;
+  [key:string]:(setopen:Dispatch<SetStateAction<boolean>>, type: "create" | "update", data?:any) => JSX.Element;
  } ={
-    client : (type,data) => <Clientform type={type} data={data}/>,
-    partner : (type,data) => <PartnerForm type={type} data={data} />,
-    product : (type,data) => <ProductsForm type={type} data={data} />,
-    service : (type,data) => <ServiceForm type={type} data={data} />
+    client : (setOpen, type,  data ) => <Clientform type={type} data={data} setopen={setOpen}/>,
+    partner : (setOpen, type, data ) => <PartnerForm type={type} data={data}  setopen={setOpen}/>,
+    product : (setOpen, type, data ) => <ProductsForm type={type} data={data}  setopen={setOpen}/>,
+    service : (setOpen, type, data ) => <ServiceForm type={type} data={data}  setopen={setOpen}/>
 }
 
 export default function FormModal( {
@@ -52,7 +52,7 @@ export default function FormModal( {
             </button>
           </form>
         ) : type === "create" || type === "update" ? (
-          forms[table](type, data)
+          forms[table](setOpen, type, data )
         ) : (
           "Form Not Found!"
         )
