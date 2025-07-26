@@ -24,3 +24,46 @@ export const createClient = async ( currentState:CurrentState, data: ClientSchem
        return {success:false, error: true}
     }
 };
+
+export const updateClient = async ( currentState:CurrentState, data: ClientSchema ) => {
+    try {
+        await prisma.client.update({
+            where:{
+                id:data.id
+            },
+            data: {
+                name: data.name,
+                clientid: data.clientid,
+                email: data.email,
+                phone: data.phone,
+                location: data.location,
+                addressline1: data.addressline1,
+                addressline2: data.addressline2,
+                addressline3: data.addressline3,
+                contactperson: data.contactperson,
+                details: data.details,
+            },
+        });
+        return {success:true, error: false}
+    } catch (err) {
+        console.error(err);
+       return {success:false, error: true}
+    }
+};
+
+
+export const deleteClient = async ( currentState:CurrentState, data: FormData ) => {
+
+    const id = data.get("id") as string
+    try {
+        await prisma.client.delete({
+            where:{
+                id:id
+            },
+        });
+        return {success:true, error: false}
+    } catch (err) {
+        console.error(err);
+       return {success:false, error: true}
+    }
+};

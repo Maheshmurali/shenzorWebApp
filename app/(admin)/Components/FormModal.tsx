@@ -1,11 +1,25 @@
 'use client'
 import Image from "next/image";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useActionState, useEffect, useState } from "react";
 //import Clientform from "./Forms/ClientForm";
 import dynamic from "next/dynamic";
 import PartnerForm from "./Forms/PartnerForm";
 import ProductsForm from "./Forms/ProductForms";
 import ServiceForm from "./Forms/ServiceForm";
+import { deleteClient } from "@/lib/serveractions";
+import { useRouter } from 'next/navigation'
+import { toast } from "react-toastify";
+import { FormContainerProps } from "./FormContainer";
+
+
+const deleteActionMap = {
+  client : deleteClient,
+  partner: deleteClient,
+  service: deleteClient,
+  product: deleteClient,
+  order: deleteClient,
+  Message: deleteClient,
+}
 
 //For loading animation
 const Clientform = dynamic(()=> import("./Forms/ClientForm"),{
@@ -13,37 +27,41 @@ const Clientform = dynamic(()=> import("./Forms/ClientForm"),{
 })
 // for select tables 
 const forms: {
-  [key:string]:(setopen:Dispatch<SetStateAction<boolean>>, type: "create" | "update", data?:any) => JSX.Element;
+  [key:string]:(setopen:Dispatch<SetStateAction<boolean>>, type: "create" | "update", data?:any, relatedData?: any) => JSX.Element;
  } ={
-    client : (setOpen, type,  data ) => <Clientform type={type} data={data} setopen={setOpen}/>,
-    partner : (setOpen, type, data ) => <PartnerForm type={type} data={data}  setopen={setOpen}/>,
-    product : (setOpen, type, data ) => <ProductsForm type={type} data={data}  setopen={setOpen}/>,
-    service : (setOpen, type, data ) => <ServiceForm type={type} data={data}  setopen={setOpen}/>
+    client : (setOpen, type,  data, relatedData ) => <Clientform type={type} data={data} setopen={setOpen} relatedData={relatedData}/>,
+    partner : (setOpen, type, data, relatedData ) => <PartnerForm type={type} data={data}  setopen={setOpen} relatedData={relatedData}/>,
+    product : (setOpen, type, data,relatedData ) => <ProductsForm type={type} data={data}  setopen={setOpen} relatedData={relatedData} />,
+    service : (setOpen, type, data,relatedData ) => <ServiceForm type={type} data={data}  setopen={setOpen} relatedData={relatedData}/>
 }
 
-export default function FormModal( {
+export default function FormModal({
     table,
     type,
     data,
     id,
-}:{
-    table: 
-    |"client"
-    |"partner"
-    |"order"
-    |"product"
-    |"service";
-    type: "create" | "update" | "delete";
-    data?: "any";
-    id?:number | string;
-} ) {
+    relatedData,
+}:FormContainerProps & {relatedData?: any}) {
     const size = type === "create" ? "w-8 h-8" : "w-7 h-7"
     const[open, setOpen] = useState(false)
 
     const Form = () => {
+
+      const[state, formAction] = useActionState(deleteActionMap[table], {success: false, error: false})
+
+        const router = useRouter()
+        useEffect(()=>{
+          if (state.success){
+            toast(`Client has been deleted Success!`)
+            setOpen(false)
+            router.refresh()
+          }
+        },[state])
+
       return (
         type === "delete" && id ? (
-          <form action="" className="p-4 flex flex-col gap-4">
+          <form action={formAction} className="p-4 flex flex-col gap-4">
+            <input type="text | number"  name="id" value={id} hidden/>
             <span className="text-center font-medium">
               All {table} data will be lost. Are you sure you want to delete this {table}?
             </span>
@@ -52,7 +70,7 @@ export default function FormModal( {
             </button>
           </form>
         ) : type === "create" || type === "update" ? (
-          forms[table](setOpen, type, data )
+          forms[table](setOpen, type, data, relatedData )
         ) : (
           "Form Not Found!"
         )

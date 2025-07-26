@@ -8,6 +8,7 @@ import prisma from "@/lib/prisma"
 import { client } from "@prisma/client"
 import noAvatar from '@/public/noAvatar.png'
 import { role } from "@/lib/utility"
+import FormContainer from "@/app/(admin)/Components/FormContainer"
 //optional
 
 
@@ -80,10 +81,10 @@ const renderRow = (item: client) => (
           </Link>
           <Link href={`/list/client/${item.id}`} className="bg-gray-100 rounded-full"/>
             { role === "admin" && 
-            <FormModal table="client" type="delete" id={item.id}/>
-            }
-            { role === "admin" && 
-            <FormModal table="client" type="update" id={item.id}/>
+            <>
+            <FormContainer table="client" type="delete" id={item.id}/>
+            <FormContainer table="client" type="update" id={item.id}/>
+            </>
             }
         </div>
       </td>

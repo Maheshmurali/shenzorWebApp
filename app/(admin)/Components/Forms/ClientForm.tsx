@@ -6,13 +6,13 @@ import InputField from '../InputField'
 import Image from 'next/image'
 import Upload from '@/Assets/upload.png'
 import { clientSchema,ClientSchema } from '@/lib/formValidationSchema'
-import { createClient } from '@/lib/serveractions'
+import { createClient, updateClient } from '@/lib/serveractions'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
 
-export default function Clientform( {type,data,setopen,} : {type: "create" | "update"; data?: any;
-   setopen:Dispatch<SetStateAction<boolean>>} ) {
+export default function Clientform( {type,data,setopen,relatedData} : {type: "create" | "update"; data?: any;
+   setopen:Dispatch<SetStateAction<boolean>>; relatedData?:any} ) {
 
     const {
         register,
@@ -22,7 +22,7 @@ export default function Clientform( {type,data,setopen,} : {type: "create" | "up
         resolver: zodResolver(clientSchema),
       });
       const [isPending, startTransition] = useTransition()
-      const [state, formAction] = useActionState(createClient, {success:false, error:false})
+      const [state, formAction] = useActionState(type ==="create" ? createClient : updateClient, {success:false, error:false})
        const onSubmit = handleSubmit((data) => {
     startTransition(() => {
       formAction(data)
@@ -44,7 +44,7 @@ export default function Clientform( {type,data,setopen,} : {type: "create" | "up
     
     <div>
       <form  className='flex flex-col gap-8' onSubmit={onSubmit}>
-        <h2 className='text-xl font-semibold'>Create New Client</h2>
+        <h2 className='text-xl font-semibold'>{type === "create"? "Create New" : "Update"} Client</h2>
         <span className='text-xs text-gray-400 font-semibold'>Client Information</span>
         <div className='flex justify-between flex-wrap gap-4'>
           <InputField 
@@ -53,6 +53,12 @@ export default function Clientform( {type,data,setopen,} : {type: "create" | "up
              defaultValue={data?.clientid} 
              register={register}
              error={errors.clientid}/>
+          {data && <InputField 
+             label=" Id"
+             name="id"
+             defaultValue={data?.id} 
+             register={register}
+             error={errors.id}/>}
           <InputField 
             label="Client Name"
             name="name"

@@ -1,6 +1,8 @@
 import {z} from 'zod'
+import { Orders } from './data';
 
     export const clientSchema = z.object({
+         id: z.string().optional(),
         name: z.string().min(3, { message: 'Required' }),
         clientid:z.string(),
         email: z.string().email({message:'Please Enter a Valid Email'}),
@@ -20,7 +22,8 @@ import {z} from 'zod'
         contactperson:z.string().min(1,{message:"Name Required"}),
         // img:z.instanceof(File,{message:"Client Image Required"}).optional(),
         details:z.string().max(50,{message:"MustBe 50 Charactor"})
-        .optional()
+        .optional(),
+        orders: z.array(z.string()).optional()
       }); 
 
      export type ClientSchema = z.infer<typeof clientSchema>;
