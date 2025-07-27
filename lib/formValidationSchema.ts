@@ -32,7 +32,7 @@ import { Orders } from './data';
       export const partnerSchema = z.object({
         id:z.string().optional(),
         name: z.string().min(3, { message: 'Partner Name Required' })
-        .max(10, {message: 'Max 10 Charactor '} ),
+        .max(30, {message: 'Max 30 Charactor '} ),
         partnerid:z.string(),
         email: z.string().email({message:'Please Enter a Valid Email'}),
         phone:z.string().min(10,{message: "In Valid Phone Number"})
