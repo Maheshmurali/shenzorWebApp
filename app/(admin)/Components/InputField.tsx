@@ -8,6 +8,7 @@ type inputFieldProps = {
   defaultValue?:string;
   error?:FieldError;
   inputProps?:React.InputHTMLAttributes<HTMLInputElement>;
+  hidden?:boolean;
 }
 
 export default function InputField({
@@ -17,9 +18,10 @@ export default function InputField({
   name,
   defaultValue,
   error,
+  hidden,
   inputProps}:inputFieldProps) {
   return (
-    <div className='flex flex-col gap-2 w-full md:w-1/4'>
+    <div className={hidden?'hidden':'flex flex-col gap-2 w-full md:w-1/4'}>
     <label className='text-xs text-gray-500'>{label}</label>
      <input type={type}
         {...register(name)} 

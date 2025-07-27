@@ -29,20 +29,20 @@ import { Orders } from './data';
      export type ClientSchema = z.infer<typeof clientSchema>;
 
 
-    //   export const partnerSchema = z.object({
-    //     name: z.string().min(3, { message: 'Partner Name Required' })
-    //     .max(10, {message: 'Max 10 Charactor '} ),
-    //     partnerid:z.string(),
-    //     email: z.string().email({message:'Please Enter a Valid Email'}),
-    //     phone:z.string().min(10,{message: "In Valid Phone Number"})
-    //     .max(10,{message: "Invalid Phone Number"}),
-    //     location:z.string().max(12,{message: "Location Required"}).min(2,{message: "Location Required"}),
-    //     contactperson:z.string().min(1,{message:"Name Required"}),
-    //     image:z.instanceof(File,{message:"Partner Image Required"}),
-    //     details:z.string().max(50,{message:"MustBe 50 Charactor"}).optional()
-    //   }); 
+      export const partnerSchema = z.object({
+        id:z.string().optional(),
+        name: z.string().min(3, { message: 'Partner Name Required' })
+        .max(10, {message: 'Max 10 Charactor '} ),
+        partnerid:z.string(),
+        email: z.string().email({message:'Please Enter a Valid Email'}),
+        phone:z.string().min(10,{message: "In Valid Phone Number"})
+        .max(30,{message: "Invalid Phone Number"}),
+        location:z.string().max(30,{message: "Location Required"}).min(2,{message: "Location Required"}),
+        contactperson:z.string().min(1,{message:"Name Required"}),
+        image:z.string().optional(),
+      }); 
 
-    //   export type partnerSchema = z.infer<typeof partnerSchema>;
+      export type PartnerSchema = z.infer<typeof partnerSchema>;
 
 
     // export  const productSchema = z.object({

@@ -1,12 +1,12 @@
 import Image from "next/image"
 import Filter from '@/Assets/filter.png'
 import Table from "@/app/(admin)/Components/Table"
-import {role} from '@/lib/data'
 import Link from "next/link"
 import FormModal from "@/app/(admin)/Components/FormModal"
 import View from '@/Assets/view.png'
 import { partner } from "@prisma/client"
 import prisma from "@/lib/prisma"
+import { role } from "@/lib/utility"
 //optional
 //For Impliment pagination take count of all item in data base use transation method(59:27)
 
@@ -78,18 +78,14 @@ const columns = [
             </button>
           </Link>
           <Link href={`/list/partner/${item.id}`} className="bg-gray-100 rounded-full">
-            {role === "admin" && 
-            //<button className="w-7 h-7 flex item-center justify-center ">
-              //<Image 
-               // src={Delete} 
-               // alt='Delete Client' 
-               // width={24} 
-               // height={24} 
-               ///>
-            //</button>
-            <FormModal table="partner" type="delete" id={item.id}/>
-            }
+           
           </Link>
+           {role === "admin" && 
+           <>
+            <FormModal table="partner" type="delete" id={item.id}/>
+            <FormModal table="partner" type="update" data={item}/>
+            </>
+            }
         </div>
       </td>
       </tr>

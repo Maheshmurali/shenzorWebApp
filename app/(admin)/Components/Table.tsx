@@ -13,7 +13,7 @@ export default function Table({
   return (
     <table className="w-full mt-4">
         <thead>
-            <tr  className="text-left text-sm text-gray-500">
+            <tr key="row1" className="text-left text-sm text-gray-500">
                 {columns.map((col=>(
                     <th key={col.accessor} className={col.className}>{col.header}</th>
                 )))}

@@ -54,11 +54,12 @@ export default function Clientform( {type,data,setopen,relatedData} : {type: "cr
              register={register}
              error={errors.clientid}/>
           {data && <InputField 
-             label=" Id"
+             label="Id"
              name="id"
              defaultValue={data?.id} 
              register={register}
-             error={errors.id}/>}
+             error={errors.id}
+             hidden/>}
           <InputField 
             label="Client Name"
             name="name"

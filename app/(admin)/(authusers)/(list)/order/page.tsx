@@ -2,8 +2,8 @@ import Image from "next/image"
 import Add from '@/Assets/create.png'
 import Filter from '@/Assets/filter.png'
 import Table from "@/app/(admin)/Components/Table"
-import {role, Orders} from '@/lib/data'
 import Link from "next/link"
+import { role } from "@/lib/utility"
 
 //optional
 type Order={

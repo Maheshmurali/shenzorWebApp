@@ -83,7 +83,7 @@ const renderRow = (item: client) => (
             { role === "admin" && 
             <>
             <FormContainer table="client" type="delete" id={item.id}/>
-            <FormContainer table="client" type="update" id={item.id}/>
+            <FormContainer table="client" type="update" data={item}/>
             </>
             }
         </div>
