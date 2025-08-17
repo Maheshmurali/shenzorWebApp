@@ -1,8 +1,8 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import Shop from '@/Assets/shopping.png'
-import Announancement from '@/Assets/announancements.png'
+import Shop from '../../../assets/shopping.png'
+import Announancement from '../../../assets/announancements.png'
 import { UserButton } from "@clerk/nextjs"
 export default function NavBAr( {username}:{username:{name:string; role:string}} ) {
   return (
