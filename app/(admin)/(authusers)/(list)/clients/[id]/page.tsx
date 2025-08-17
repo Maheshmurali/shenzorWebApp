@@ -1,5 +1,5 @@
-// import Complect from '@/Assets/statusok.png'
-// import InComplect from '@/Assets/statusno.png'
+import Complect from '../../../../../../assets/statusok.png'
+import InComplect from '../../../../../../assets/statusno.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import {PreOrder, ClientMessages, Announancement} from '@/lib/data'
@@ -74,8 +74,8 @@ export default function ClientProfilePage() {
     <td className="hidden md:table-cell">{item.orderdetails}</td>
     {item.status?
     <td>
-      <Image src="" alt='ok' width={16} height={16}/></td>:
-      <td><Image src="" alt='No' width={16} height={16}/>
+      <Image src={Complect} alt='ok' width={16} height={16}/></td>:
+      <td><Image src={InComplect} alt='No' width={16} height={16}/>
     </td>}
     </tr>
   )

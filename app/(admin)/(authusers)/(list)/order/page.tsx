@@ -1,6 +1,6 @@
 import Image from "next/image"
-// import Add from '@/Assets/create.png'
-// import Filter from '@/Assets/filter.png'
+import Add from '../../../../../assets/create.png'
+import Filter from '../../../../../assets/filter.png'
 import Table from "@/app/(admin)/Components/Table"
 import Link from "next/link"
 import { role } from "@/lib/utility"
@@ -87,10 +87,10 @@ export default function OrderListPage() {
         </div>
         <div className="flex justify-center items-center gap-4">
             <button>
-                <Image src="/assets/filter.png" alt="Add New Client" width={24} height={24} className="cursor-pointer"/>
+                <Image src={Filter} alt="Add New Client" width={24} height={24} className="cursor-pointer"/>
             </button>
         { role ==="admin" && <button className="w-8 h-8 flex justify-center items-center">
-                 <Image src="/assets/create.png" alt="Add New Client" width={24} height={24} className="cursor-pointer"/>
+                 <Image src={Add} alt="Add New Client" width={24} height={24} className="cursor-pointer"/>
             </button>}
         </div>
       </div>

@@ -1,16 +1,16 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import Home from '@/Assets/home.png'
-import Clients from '@/Assets/clients.png'
-import Partners from '@/Assets/partners.png'
-import Products from '@/Assets/products.png'
-import Services from '@/Assets/services.png'
-import Shop from '@/Assets/shopping.png'
-import Announancements from '@/Assets/announancements.png'
-import Messages from '@/Assets/messages.png'
-import Order from '@/Assets/order.png'
-import Reset from '@/Assets/Reset.png'
+import Home from '../../../assets/home.png'
+import Clients from '../../../assets/clients.png'
+import Partners from '../../../assets/partners.png'
+import Products from '../../../assets/products.png'
+import Services from '../../../assets/services.png'
+import Shop from '../../../assets/shopping.png'
+import Announancements from '../../../assets/announancements.png'
+import Messages from '../../../assets/messages.png'
+import Order from '../../../assets/order.png'
+import Reset from '../../../assets/Reset.png'
 import { currentUser } from "@clerk/nextjs/server"
 
 const menuItems = [
