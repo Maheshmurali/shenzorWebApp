@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Filter from '@/Assets/filter.png'
+// import Filter from '@/Assets/filter.png'
 import Table from "@/app/(admin)/Components/Table"
 import { Messages} from '@/lib/data'
 
@@ -74,7 +74,7 @@ export default function MessageListPage() {
         </div>
         <div className="flex justify-center items-center gap-4">
             <button>
-                <Image src={Filter} alt="Add New Client" width={24} height={24} className="cursor-pointer"/>
+                <Image src="" alt="Add New Client" width={24} height={24} className="cursor-pointer"/>
             </button>
         </div>
       </div>

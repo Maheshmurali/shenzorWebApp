@@ -1,9 +1,9 @@
 import Image from "next/image"
-import Filter from '@/Assets/filter.png'
+// import Filter from '@/Assets/filter.png'
 import Table from "@/app/(admin)/Components/Table"
 import Link from "next/link"
 import FormModal from "@/app/(admin)/Components/FormModal"
-import View from '@/Assets/view.png'
+// import View from '@/Assets/view.png'
 import { partner } from "@prisma/client"
 import prisma from "@/lib/prisma"
 import { role } from "@/lib/utility"
@@ -70,7 +70,7 @@ const columns = [
         <div className="flex item-center gap-2">
           <Link href={`/partner/${item.id}`}>
           <button className="w-7 h-7 flex item-center justify-center bg-slate-100 rounded-full">
-              <Image src={View} 
+              <Image src=""
               alt='Profile View' 
               width={24} 
               height={24}
@@ -103,7 +103,7 @@ export default async function PartnerListPage() {
         </div>
         <div className="flex justify-center items-center gap-4">
             <button>
-                <Image src={Filter} alt="Filter Partner" width={24} height={24} className="cursor-pointer"/>
+                <Image src="" alt="Filter Partner" width={24} height={24} className="cursor-pointer"/>
             </button>
             {role === "admin" && 
              //<button className="w-8 h-8 flex justify-center items-center">
