@@ -1,9 +1,9 @@
 import Image from "next/image"
-import Filter from '@/Assets/filter.png'
+// import Filter from '@/Assets/filter.png'
 import Table from "@/app/(admin)/Components/Table"
 import Link from "next/link"
 import FormModal from "@/app/(admin)/Components/FormModal"
-import View from '@/Assets/view.png'
+//import View from '@/Assets/view.png'
 import prisma from "@/lib/prisma"
 import { client } from "@prisma/client"
 import noAvatar from '@/public/noAvatar.png'
@@ -71,7 +71,7 @@ const renderRow = (item: client) => (
         <div className="flex item-center gap-2">
         <Link href={`clients/${item.id}`}>
             <button className="w-7 h-7 flex item-center justify-center ">
-              <Image src={View} 
+              <Image src= "" 
               alt='Profile View' 
               width={24} 
               height={24}
@@ -102,7 +102,7 @@ export default async function ClientListPage() {
         </div>
         <div className="flex justify-center items-center gap-4">
             <button>
-                <Image src={Filter} alt="Add New Client" width={24} height={24} className="cursor-pointer"/>
+                <Image src="" alt="Add New Client" width={24} height={24} className="cursor-pointer"/>
             </button>
         { role ==="admin" && 
           <FormModal table="client" type="create"/>
