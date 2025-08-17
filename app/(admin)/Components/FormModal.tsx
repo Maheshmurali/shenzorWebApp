@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Dispatch, SetStateAction, useActionState, useEffect, useState } from "react";
 //import Clientform from "./Forms/ClientForm";
 import dynamic from "next/dynamic";
-import ProductsForm from "./Forms/ProductForms";
 import ServiceForm from "./Forms/ServiceForm";
 import { deleteClient, deletePartner } from "@/lib/serveractions";
 import { useRouter } from 'next/navigation'
@@ -28,13 +27,16 @@ const Clientform = dynamic(()=> import("./Forms/ClientForm"),{
 const PartnerForm = dynamic(()=> import("./Forms/PartnerForm"),{
   loading:()=> <h1>Loading....</h1>
 })
+const ProductsForms = dynamic(()=> import("./Forms/ProductForms"),{
+  loading:()=> <h1>Loading....</h1>
+})
 // for select tables 
 const forms: {
   [key:string]:(setopen:Dispatch<SetStateAction<boolean>>, type: "create" | "update", data?:any, relatedData?: any) => JSX.Element;
  } ={
     client : (setOpen, type,  data, relatedData ) => <Clientform type={type} data={data} setopen={setOpen} relatedData={relatedData}/>,
     partner : (setOpen, type, data) => <PartnerForm type={type} data={data}  setopen={setOpen}/>,
-    product : (setOpen, type, data,relatedData ) => <ProductsForm type={type} data={data}  setopen={setOpen} relatedData={relatedData} />,
+    product : (setOpen, type, data, relatedData ) => <ProductsForms type={type} data={data}  setopen={setOpen} relatedData={relatedData}/>,
     service : (setOpen, type, data,relatedData ) => <ServiceForm type={type} data={data}  setopen={setOpen} relatedData={relatedData}/>
 }
 

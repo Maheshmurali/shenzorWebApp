@@ -69,9 +69,9 @@ const PartnersList = [
   },
   {
     id: 6,
-    image: "/partners/bwell.png",
-    hyperlink: "https://www.bwell-int.com/",
-    name: "BWELL TECHNOLOGY® Inline Tethered Inspection Platform",
+    image: "/partners/sortimo.png",
+    hyperlink: "https://www.mysortimo.com/en/",
+    name: "Van Racking Systems and Mobile Transport Solutions",
   },
   {
     id: 7,
@@ -79,6 +79,13 @@ const PartnersList = [
     hyperlink: "https://envirobot.com/en/",
     name: "JET-POWERED, STEERABLE HD VIDEO NOZZLE",
   },
+   {
+    id: 8,
+    image: "/partners/falch.png",
+    hyperlink: "https://www.falch.com/en/",
+    name: "Water UHP jetting machines and accessories",
+  },
+
 ];
 
 export default function About() {

@@ -1,41 +1,50 @@
 'use client'
-import React from 'react'
-import {z} from "zod"
+import React, { Dispatch, SetStateAction, useActionState, useEffect, useTransition } from 'react'
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import InputField from '../InputField'
 import Image from 'next/image'
 import Upload from '@/Assets/upload.png'
+import { productSchema, ProductSchema } from '@/lib/formValidationSchema'
+import { createProduct } from '@/lib/serveractions'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
-    const schema = z.object({
-        name: z.string().min(3, { message: 'Product Name Required' })
-        .max(10, {message: 'Max 10 Charactor '} ),
-        productid:z.string(),
-        contactperson:z.string().min(1,{message:"Name Required"}),
-        image:z.instanceof(File,{message:"Partner Image Required"}),
-        details:z.string().max(50,{message:"MustBe 50 Charactor"}).optional()
-      }); 
+ 
 
-      type Inputs = z.infer<typeof schema>;
-
-export default function ProductsForm( {type,data} : {type: "create" | "update"; data?: any} ) {
+export default function ProductForm( {type,data,setopen, relatedData} : {type: "create" | "update"; data?: any;
+   setopen:Dispatch<SetStateAction<boolean>>; relatedData? : any} ) {
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm <Inputs>({
-        resolver: zodResolver(schema),
+      } = useForm <ProductSchema>({
+        resolver: zodResolver(productSchema),
       });
+      const [isPending, startTransition] = useTransition()
+      const [state, formAction] = useActionState(createProduct, {success:false, error:false})
+       const onSubmit = handleSubmit((data) => {
+          startTransition(() => {
+          formAction(data)
+    })
+  })
 
-      const onSubmit = handleSubmit(data=>{
-        console.log(data)
-      })
+  //mannual redirect
+  const router = useRouter()
+
+  useEffect(()=>{
+    if (state.success){
+      toast(`Client has been ${type === 'create' ? "Added" : "UpDated"} Success!`)
+      setopen(false)
+      router.refresh()
+    }
+  },[state])
   return (
     
     <div>
-      <form action="" className='flex flex-col gap-8' onSubmit={onSubmit}>
-        <h2 className='text-xl font-semibold'>Create New Product</h2>
+      <form className='flex flex-col gap-8' onSubmit={onSubmit}>
+        <h2 className='text-xl font-semibold'>{type === "create" ? "Create New" : "Update"}Product</h2>
         <span className='text-xs text-gray-400 font-semibold'>Product Information</span>
         <div className='flex justify-between flex-wrap gap-4'>
           <InputField 
@@ -45,27 +54,45 @@ export default function ProductsForm( {type,data} : {type: "create" | "update"; 
              register={register}
              error={errors.productid}/>
           <InputField 
+             label="Partner Id"
+             name="partnerid"
+             defaultValue={data?.partnerid} 
+             register={register}
+             error={errors.partnerid}/>
+          <InputField 
             label="Product Name"
             name="name"
             defaultValue={data?.name} 
             register={register}
             error={errors.name}/>
-            <InputField 
-            label="Resprasanative Name"
-            name="contactperson"
-            defaultValue={data?.contactperson} 
+          <InputField 
+            label="Specification 1"
+            name="spec1"
+            defaultValue={data?.spec1} 
             register={register}
-            error={errors.contactperson}/>
+            error={errors.spec1}/>
+          <InputField 
+            label="Specification 2"
+            name="spec2"
+            defaultValue={data?.spec2} 
+            register={register}
+            error={errors.spec2}/>
+          <InputField 
+            label="Specification 3"
+            name="spec3"
+            defaultValue={data?.spec3} 
+            register={register}
+            error={errors.spec3}/>
         </div>
         <div className='flex flex-col gap-2 w-full'>
          <label className='text-xs text-gray-500'>Product Description</label>
           <input type="text"
-             {...register("name")} 
+             {...register("details")} 
              defaultValue={data?.details}
              className='ring-[1.5px] ring-gray-300 rounded-md text-xs w-full p-4'/>
            {errors.details?.message && <p className='text-xs text-red-600'>{errors.details?.message.toString()}</p>}
         </div>
-        <div className='flex gap-2 w-full md:w-1/4 cursor-pointer'>
+        {/* <div className='flex gap-2 w-full md:w-1/4 cursor-pointer'>
          <label className='flex item-center text-xs text-gray-500b cursor-pointer' htmlFor="image">
           <Image src={Upload} alt='Client Profile image' width={28} height={28} />
           <span className='text-gray-500 items-center flex align-middle'>Upload a Photo</span>
@@ -75,8 +102,9 @@ export default function ProductsForm( {type,data} : {type: "create" | "update"; 
           {...register("image")}
           className='hidden'/>
            {errors.image?.message && <p className='text-xs text-red-600'>{errors.image?.message.toString()}</p>}
-        </div>
-        <button className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500'>{type === "create" ? "Create" : "UpDate"}</button>
+        </div> */}
+        {state.error && <span>Something Went Wrong.....!</span>}
+        <button className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500'>{type === "create" ? "Create" : "Up Date"}</button>
       </form>
     </div>
   )

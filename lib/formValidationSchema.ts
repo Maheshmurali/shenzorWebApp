@@ -45,28 +45,32 @@ import { Orders } from './data';
       export type PartnerSchema = z.infer<typeof partnerSchema>;
 
 
-    // export  const productSchema = z.object({
-    //           name: z.string().min(3, { message: 'Product Name Required' })
-    //           .max(10, {message: 'Max 10 Charactor '} ),
-    //           productid:z.string(),
-    //           spec1:z.string(),
-    //           spec2:z.string(),
-    //           spec3:z.string(),
-    //           contactperson:z.string().min(1,{message:"Name Required"}),
-    //           image:z.instanceof(File,{message:"Partner Image Required"}),
-    //           details:z.string().max(50,{message:"MustBe 50 Charactor"}).optional()
-    //         }); 
+    export  const productSchema = z.object({
+              name: z.string().min(3, { message: 'Product Name Required' })
+              .max(30, {message: 'Max 30 Charactor '} ),
+              productid:z.string(),
+              partnerid:z.string(),
+              spec1:z.string(),
+              spec2:z.string(),
+              spec3:z.string(),
+              image:z.string().optional(),
+              details:z.string().max(50,{message:"MustBe 50 Charactor"}),
+              partner:z.array(z.string()).optional()
+            }); 
       
-    //       export type productSchema = z.infer<typeof productSchema>;
+          export type ProductSchema = z.infer<typeof productSchema>;
 
     
-    //  export  const serviceSchema = z.object({
-    //         name: z.string().min(3, { message: ' Name Of Service Required' })
-    //         .max(10, {message: 'Max 10 Charactor '} ),
-    //         serviceid:z.string(),
-    //         contactperson:z.string().min(1,{message:"Name Required"}),
-    //         image:z.instanceof(File,{message:"Service Image Required"}),
-    //         details:z.string().max(50,{message:"MustBe 50 Charactor"}).optional()
-    //       }); 
+     export  const serviceSchema = z.object({
+            name: z.string().min(3, { message: ' Name Of Service Required' })
+            .max(30, {message: 'Max 30 Charactor '} ),
+            serviceid:z.string(),
+            spec1:z.string(),
+            spec2:z.string(),
+            spec3:z.string(),
+            partnerid:z.string(),
+            image:z.string().optional(),
+            details:z.string().max(50,{message:"MustBe 50 Charactor"})
+          }); 
     
-    //     export  type serviceSchema = z.infer<typeof serviceSchema>;
+        export  type ServiceSchema = z.infer<typeof serviceSchema>;

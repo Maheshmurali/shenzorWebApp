@@ -11,7 +11,8 @@ import enz from "@/assets/products/enz/EnzCam.png"
 import ims from "@/assets/products/ims/ims Robotics.png"
 import dietmarkaiser from "@/assets/products/dietmarkaiser/DYNA Combi.jpg"
 import envirobot from "@/assets/products/envirobot/viper.png"
-import bwell from "@/assets/products/bwelltechnology/bwell.webp"
+import sortimo from "@/assets/products/sortimo/sortimo.jpg"
+import falch from "@/assets/products/flach/falch.jpg"
 import { motion } from "framer-motion";
 
 const products = [
@@ -59,10 +60,17 @@ const products = [
   },
   {
     id: 7,
-    title: "Bwell Technology",
-    description: "Bwell Technology's System is designed for the rehabilitation of various pipeline materials, including concrete, steel, and cast iron pipes, covering a wide range of diameters from DN150-1300.",
-    image: bwell,
-    link: "/products/bwelltechnology"
+    title: "Sortimo",
+    description: "Sortimo van storage is far more than just a shelf in the load area of the transporter. Because Sortimo offers solutions for more productivity, improved profitability and happy employees, company owners and, above all, customers. With van shelving from Sortimo there is the right solution for almost every vehicle brand. ",
+    image: sortimo,
+    link: "/products/sortimo"
+  },
+   {
+    id: 8,
+    title: "Falch",
+    description: "Water Jetting MachinesFalch specializes in professional water jetting machines, covering a spectrum from compact mobile units to robust industrial-grade systems. Our portfolio includes:Wheel JetsBase JetsTrail JetsTruck- and Container-Mounted JetsThese systems are designed to handle high-pressure cleaning, removal, and surface restoration tasks.",
+    image: falch,
+    link: "/products/falch"
   },
 ];
 

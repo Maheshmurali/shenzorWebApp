@@ -17,12 +17,14 @@ import envirobot from "@/assets/products/envirobot/viper.png"
 import viperlong from "@/assets/products/envirobot/viper-long.png"
 import vipercomapct from "@/assets/products/envirobot/viper-compact.jpg"
 import viperlight from "@/assets/products/envirobot/viper-light.jpg"
-import bewll from "@/assets/products/bwelltechnology/bwell.webp"
-import phoenix180 from "@/assets/products/bwelltechnology/phonix-180c.png"
-import phoenix100 from "@/assets/products/bwelltechnology/phoenix.png"
-import snake from "@/assets/products/bwelltechnology/snake1000-1.png"
+import sr5 from "@/assets/products/sortimo/sr5.jpg"
+import globelst4 from "@/assets/products/sortimo/globelst4.jpg"
+import fr5 from "@/assets/products/sortimo/fr5.jpg"
 import ims from "@/assets/products/ims/ims Robotics.png"
-
+import sortimo from '@/assets/products/sortimo/sortimo.jpg'
+import falch from '@/assets/products/flach/falch.jpg'
+import g349 from '@/assets/products/flach/g349.jpg'
+import g624 from '@/assets/products/flach/g624.jpg'
 
 export const ClientData= [
     {
@@ -759,27 +761,27 @@ export const partnerProducts = {
       },
     ]
   },
-  bwelltechnology: {
-    name: "Bwell Technology",
-    description: "Comprehensive pipeline rehabilitation system designed for various materials including concrete, steel, and cast iron pipes with diameters from DN150-1300.",
-    logo: bewll,
+  sortimo: {
+    name: "Sortimo",
+    description: "Sortimovan rackingsOptimise your workflows withthe van rackings from Sortimo",
+    logo: sortimo,
     products: [
       {
         id: 1,
-        name: "Phoenix-180C UV",
-        category: "CIPP Lining System",
-        image: phoenix180,
+        name: "SR5 – The next generation",
+        category: "Van Racking",
+        image: sr5,
         width: "500",
         height : "2",
-        description: "Phoenix-180C UV System is designed for the rehabilitation of various pipeline materials, including concrete, steel, and cast iron pipes, covering a wide range of diameters from DN150-1300.",
+        description: "Sortimo have developed the fifth generation of van racking - it is an intelligent mobility system which offers the user maximum efficiency in day-to-day working. SR5 embodies more than 50 years of experience, passion and expertise in a single unit. It has been designed so that you can configure it in accordance with your individual requirements and compliant with the sector stipulations in mySortimo configuration. Maximum load area exploitation, perfected workplace organisation and full compatibility with the tried and tested EcoSystem from Sortimo make SR5 the ideal partner in your day-to-day working.",
         keyFeatures: [
-          "Advanced Digital Drive System",
-          "Modular Lamp Chain with Imported Mercury Lamps",
-          "Wireless Control and Smart Cable Retrieval",
-          "High-Performance Fan and Generator System",
+          "Tried and tested quality & individuality",
+          "Maximum load space utilisation",
+          "Can be configured online",
+          "Highest productivity",
         ],
         specifications: {
-          "Pipe Diameter": "DN150 - DN1300",
+          "Compatiblility": "BOXXes and Cases from Sortimo are the ideal solution for safe and organised transport of tools, machines, small components and consumables",
           "Liner Material": "Polyester felt + resin",
           "Curing Methods": "Hot water, steam, UV",
           "Design Life": "50+ years",
@@ -789,16 +791,16 @@ export const partnerProducts = {
       },
       {
         id: 2,
-        name: "PHOENIX 100s ",
-        category: "Localized Repair System",
-        image: phoenix100,
+        name: "Globelyst 4 ",
+        category: "Van Shelving System",
+        image: globelst4,
         width: "500",
         height : "2",
-        description: "PHOENIX 100s is an efficient UV curing system consisting of a main control unit, a light chain/light core, and additional tool kits. With adjustable UV mercury lamps and flexible modular design, it supports a wide range of pipe diameters from DN150-1200, making it an ideal solution for diverse pipeline repair needs.",
+        description: "Globelyst4 van racking – a van shelving system to any challengeGlobelyst4 van racking provides organisation, structure and safety in the transporter. Its intelligent organisation system makes the workflow more targeted and efficient and thus contributes to distinct productivity increase in day-to-day working. Every second that you would otherwise waste on unnecessary searching for tools can be used to earn profit at the customer site thanks to Globelyst4 van racking. The van racking helps tradespeople to structure their tasks in their individual mobile daily routine more professionally, safer and more profitably.",
         keyFeatures: [
-          "Digital & High-Efficiency Operation",
-          "Modular Design for Versatile Applications",
-          "Stable & High-Performance UV Curing Technology",
+          "Increased flexibility on account of a wide variety of individualisation opportunities.",
+          "Crash tests and regular quality checks mean that Globelyst4 van racking will withstand extreme situations.",
+          "Simple and quick load securing using integrated ProSafe load securing systems in the uprights and cross-beams",
         ],
         specifications: {
           "Repair Length": "0.5m - 3m",
@@ -811,18 +813,72 @@ export const partnerProducts = {
       },
             {
         id: 3,
-        name: "Pressurized Water Leak Detection and Inspection",
-        category: "Localized Repair System",
-        image: snake,
+        name: "Flex Rack 2.0",
+        category: "The flexible racking system ",
+        image: fr5,
         width: "500",
         height : "2",
-        description: "Snake is a modular-designed device for the inspection of pressure pipelines. It is capable of carrying multiple sensors for comprehensive inspection, ideal for DN200 and upwards pressurized pipeline leakage detection and in pipe inspection.",
+        description: "FR5 – The flexible racking system FR5 is the van racking system specifically designed for courier, express delivery and parcel services. The racking system adapts to individual loading volumes thanks to the shelves’ practical folding function and the adjustable angle of inclination, so that even bulky loads can be stowed easily and transported safely. The integrated ProSafe load securing system makes it easy to secure packages of all sizes, making the day-to-day work of courier drivers much easier. Small parts can be stored in SR-BOXXes, which can be mounted above or below the shelf. This makes FR5 ideal for craftsmen who require maximum flexibility in their van racking system.",
         keyFeatures: [
-          "Three Types of Probes for Versatile Detection",
-          "Highly Integrated, Flexible Probe with Inertial Navigation",
-          "Multi-Sensor Fusion Detection",
-          "Motor-Driven Cable Drum (500/1000/2000m Options)",
-          "Wireless Control Unit with Real-Time Video Transmission"
+          "The shelves can be folded up or down with one hand.",
+          "FR5 can be individually configured according to personal needs and also adapts to the installation requirements.",
+          "for driver and load thanks to ProSafe integration",
+          "The ProPartition with door means the loading space can be entered from the driver’s cab.",
+          "SR5 on one side, FR5 on the other: this is how maximum customisation works"
+        ],
+        specifications: {
+          "Repair Length": "0.5m - 3m",
+          "Pipe Diameter": "DN100 - DN800",
+          "Materials": "Epoxy, polyurethane, silicate",
+          "Curing Time": "2-4 hours",
+          "Service Life": "25+ years",
+          "Working Pressure": "Up to 4 bar"
+        }
+      },
+
+    ]
+  },
+  falch: {
+    name: "Falch",
+    description: "Water Jetting MachinesFalch specializes in professional water jetting machines, covering a spectrum from compact mobile units to robust industrial-grade systems. Our portfolio includes:Wheel Jets Base JetsTrail JetsTruck- and Container-Mounted JetsThese systems are designed to handle high-pressure cleaning, removal, and surface restoration tasks.",
+    logo: falch,
+    products: [
+      {
+        id: 1,
+        name: "wheel jet 2 100-10-0-e",
+        category: "Water Jetting Machines",
+        image: g349,
+        width: "500",
+        height : "2",
+        description: "Water Jetting MachinesFalch specializes in professional water jetting machines, covering a spectrum from compact mobile units to robust industrial-grade systems. Our portfolio includes:Wheel Jets Base JetsTrail JetsTruck- and Container-Mounted JetsThese systems are designed to handle high-pressure cleaning, removal, and surface restoration tasks.",
+        keyFeatures: [
+          "Working pressure : 30 – 100 bar (435 – 1450 psi)",
+          "Flow rate : 5 – 10 l/min (1,3 – 2,6 US gal/min)",
+          "Standard nozzle size : 044",
+          "Pump power : 1,8 kW, 2800 rpm, 2800 rpm, 2 – 5 bar, 50 °C",
+        ],
+        specifications: {
+          "Compatiblility": "BOXXes and Cases from Sortimo are the ideal solution for safe and organised transport of tools, machines, small components and consumables",
+          "Liner Material": "Polyester felt + resin",
+          "Curing Methods": "Hot water, steam, UV",
+          "Design Life": "50+ years",
+          "Installation Length": "Up to 300m",
+          "Pressure Rating": "Up to 6 bar"
+        }
+      },
+      {
+        id: 2,
+        name: "base jet 125 1500-38-0-d",
+        category: "Van Shelving System",
+        image: g624,
+        width: "500",
+        height : "2",
+        description: "Water Jetting MachinesFalch specializes in professional water jetting machines, covering a spectrum from compact mobile units to robust industrial-grade systems. Our portfolio includes:Wheel Jets Base JetsTrail JetsTruck- and Container-Mounted JetsThese systems are designed to handle high-pressure cleaning, removal, and surface restoration tasks.",
+        keyFeatures: [
+          "Working pressure : 300 – 1500 bar (4351 – 21756 psi)",
+          "Flow rate : 16 – 38 l/min (4,2 – 10 US gal/min)",
+          "Standard nozzle size : 043",
+          "Pump power : 110 kW, 221 rpm, 221 – 547 rpm, 2 – 5 bar, 40 °C",
         ],
         specifications: {
           "Repair Length": "0.5m - 3m",
